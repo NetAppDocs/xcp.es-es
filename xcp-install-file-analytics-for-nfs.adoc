@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: xcp-install-file-analytics-for-nfs.html 
+keywords: netapp, xcp, install, installing, file, analytics, nfs, upgrade, upgrading 
+summary: Instalar o actualizar File Analytics para NFS 
+---
+= Instale File Analytics para NFS
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Instalar o actualizar File Analytics para NFS.
+
+Para ver los requisitos del sistema para NFS, consulte link:xcp-install-xcp-nfs.html["Instale XCP NFS"]. La `configure.sh` La secuencia de comandos instala y habilita las configuraciones predeterminadas DE HTTPD y PostgreSQL disponibles para el servidor Linux. Puede cambiar o actualizar a una versión más reciente según sea necesario y seguir las directrices de seguridad.
+
+.Antes de empezar
+* No puede ejecutar la aplicación XCP y XCP como servicio simultáneamente en el mismo host. Si se está ejecutando alguna operación XCP, complete las operaciones antes de iniciar la configuración.
+* El equipo Linux debe estar conectado al servidor de repositorio de Yum o a Internet.
+* Si hay un firewall configurado en el equipo Linux, debe cambiar la configuración del firewall para habilitar los puertos utilizados por XCP, el servicio XCP y los servicios utilizados por XCP File Analytics. Para obtener más información, vaya a. xref:xcp-ports-used.html[Puertos utilizados por XCP].
+
+
+.Pasos
+. Vaya a la carpeta XCP y ejecute el `./configure.sh` guión. La secuencia de comandos tarda entre tres y diez minutos en configurar la máquina Linux y completar las siguientes tareas:
++
+.. Descargar paquetes PostgreSQL
+.. Instale el servidor PostgreSQL
+.. Instale HTTPD
+.. Use el protocolo SSL abierto para crear un certificado autofirmado (`server.key and server.crt`)
+.. Cree la base de datos de análisis de archivos XCP
+
+
+. Seleccione `option 1 Configure client system` Desde el menú de configuración XCP.
+. Para realizar una instalación nueva, actualice la contraseña de los usuarios del administrador y de la base de datos. En el caso de una actualización, se le pedirá que detenga el servicio XCP. Cuando haya terminado, seleccione `option 0`.
+. Inicie el servicio XCP. Utilice el siguiente comando para comprobar si el servicio XCP se está ejecutando: Estado xcp del servicio
+. Inicie File Analytics en el navegador: *\https://<ip address of linux>/xcp*.
+

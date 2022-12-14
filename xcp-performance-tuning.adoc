@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: xcp-performance-tuning.html 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
+summary: 'Ajuste del rendimiento (solo NFS)' 
+---
+= Ajuste del rendimiento
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Para XCP NFS, después de planificar la migración mediante `show` y.. `scan` comandos, puede migrar datos.
+
+
+NOTE: Cuando realiza la migración de datos como usuario no raíz, un usuario raíz puede realizar el siguiente paso.
+
+Para obtener el rendimiento y la fiabilidad óptimos, NetApp recomienda establecer los siguientes parámetros de rendimiento TCP del kernel de Linux en `/etc/sysctl.conf` En el host del cliente Linux XCP. Ejecución `sysctl -p` o la `reboot` comando para confirmar los cambios:
+
+[listing]
+----
+net.core.rmem_default = 1342177
+net.core.rmem_max = 16777216
+net.core.rmem_max = 16777216
+net.core.wmem_default = 1342177
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 1342177 16777216
+net.ipv4.tcp_wmem = 4096 1342177 16777216
+net.core.netdev_max_backlog = 300000
+net.ipv4.tcp_fin_timeout = 10
+----
+
+NOTE: Para un usuario que no sea raíz, el ajuste debe ser realizado por un usuario raíz.

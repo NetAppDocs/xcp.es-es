@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: xcp-using-file-analytics.html 
+keywords: netapp, xcp, plan, planning, data, migration, migrate, migrating, file, analytics 
+summary: Planificar mediante Análisis de archivos 
+---
+= Planificar mediante Análisis de archivos
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Planifique la migración de datos con File Analytics.
+
+
+NOTE: XCP es una interfaz de línea de comandos, mientras que File Analytics tiene una interfaz gráfica de usuario.
+
+*Descripción general*
+
+XCP File Analytics utiliza la API de exploración XCP para recopilar datos de hosts NFS o SMB. A continuación, estos datos se muestran en la GUI de análisis de archivos XCP. El análisis de archivos XCP incluye tres componentes principales:
+
+* Servicio XCP
+* Base de datos de análisis de archivos
+* GUI de análisis de archivos para gestionar y ver datos
+
+
+El método de implementación de los componentes de XCP File Analytics depende de la solución necesaria:
+
+* Implementación de soluciones de análisis de archivos XCP para sistemas de archivos NFS:
++
+** Puede implementar la GUI de File Analytics, la base de datos y el servicio XCP en el mismo host Linux.
+
+
+* Implementación de soluciones de análisis de archivos XCP para sistemas de archivos SMB: Debe implementar la GUI y la base de datos de análisis de archivos en un host Linux e implementar el servicio XCP en un host de Windows.
+

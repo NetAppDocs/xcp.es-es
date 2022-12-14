@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: get-more-information.html 
+keywords: netapp, xcp, more information, 
+summary: Obtenga más información. 
+---
+= Obtenga más información
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+Puede obtener ayuda y obtener más información a través de varios recursos, documentación y foros.
+
+* link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064["Documentación de XCP"^] – Incluidos las Notas de la versión y el material de referencia para esta versión y las versiones anteriores
+* link:https://www.youtube.com/user/NetAppTechCommTV/search?query=xcp["TechCommTV de NetApp"^]– Vídeos de NetApp XCP
+* link:https://xcp.netapp.com/["XCP de NetApp"^] – incluyendo vínculos para obtener una licencia
+* link:https://www.netapp.com/search/#q=xcp&sort=relevancy&f:@language=English["Recursos de NetApp"^] Para XCP: Incluye enlaces a informes técnicos y artículos de la base de conocimientos
+* link:https://community.netapp.com/["Comunidad de NetApp"^] – foros
+

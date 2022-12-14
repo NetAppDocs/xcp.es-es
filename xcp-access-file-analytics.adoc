@@ -1,0 +1,108 @@
+---
+sidebar: sidebar 
+permalink: xcp-access-file-analytics.html 
+keywords: netapp, xcp, file, servers, access, analytics, learn, about, graphs, hot, cold, count, size, entries in directory, distribution by size, directory depth, file space used by size 
+summary: Análisis de archivos proporciona una vista gráfica de los resultados del análisis 
+---
+= Acceda a File Analytics
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Análisis de archivos proporciona una vista gráfica de los resultados del análisis.
+
+La GUI de análisis de archivos XCP proporciona un panel con gráficos para visualizar análisis de archivos. La GUI de análisis de archivos XCP se activa al configurar XCP en una máquina Linux.
+
+
+NOTE: Para consultar los exploradores admitidos para acceder a File Analytics, consulte link:https://mysupport.netapp.com/matrix/["IMT de NetApp"^].
+
+.Pasos
+. Utilice el enlace `\https://<IP address of linux machine>/xcp` Para acceder a la GUI de análisis de archivos. Cuando se le solicite, acepte el certificado de seguridad:
++
+.. Seleccione Avanzado debajo de la declaración de privacidad.
+.. Seleccione el campo continuar a. `<IP address of linux machine>` enlace.
+
+
+. Inicie sesión en la GUI de análisis de archivos.
++
+Hay dos formas de iniciar sesión en la GUI de File Analytics:
+
++
+.. Utilice el nombre de usuario “admin” y la contraseña que estableció durante la configuración.
++
+image:xcp_image2.png["Pantalla de inicio de sesión de XCP File Analytics"]
+
+.. Configure y habilite la funcionalidad de inicio de sesión único (SSO) de toda la empresa.
++
+Puede utilizar esta capacidad de inicio de sesión para configurar XCP File Analytics en una máquina en particular y compartir la URL de la interfaz de usuario web en toda la empresa, lo que permite a los usuarios iniciar sesión en la interfaz de usuario utilizando sus credenciales de SSO.
+
++
+
+NOTE: El inicio de sesión SSO es opcional y se puede configurar y habilitar de forma permanente. Para configurar el inicio de sesión SSO basado en el lenguaje de marcado de aserción de seguridad (SAML), consulte <<Configure las credenciales de SSO>>.
+
+
+
+. Después de iniciar sesión, verá que el agente NFS; hay una Marca de verificación verde que muestra una configuración mínima del sistema del sistema Linux y la versión XCP.
+. Si ha configurado un agente SMB, puede ver el agente SMB agregado en la misma tarjeta de agente.
+
+
+
+
+== Configure las credenciales de SSO
+
+La funcionalidad de inicio de sesión SSO se implementa en XCP File Analytics con SAML y es compatible con el proveedor de identidades de Active Directory Federation Services (ADFS). SAML descarga la tarea de autenticación en el proveedor de identidades (IDP) de terceros de la empresa, que puede utilizar cualquier número de métodos para la MFA (autenticación multifactor).
+
+.Pasos
+. Registre la aplicación XCP File Analytics con su proveedor de identidades empresarial.
++
+El análisis de archivos se ejecuta ahora como proveedor de servicios y, por lo tanto, debe registrarse en el proveedor de identidades de su empresa. En general, existe un equipo en la empresa que se encarga de este proceso de integración SSO. El primer paso es buscar y contactar con el equipo pertinente y compartir con ellos los detalles de metadatos de la aplicación File Analytics.
+
++
+A continuación se muestran los detalles obligatorios que debe compartir para registrarse en su proveedor de identidades:
+
++
+** *ID de entidad de proveedor de servicios:* `\https://<IP address of linux machine>/xcp`
+** *URL del Servicio de consumidores de aserción del proveedor de servicios (ACS):* `\https://<IP address of linux machine>:5030/api/xcp/SAML/sp`
++
+También puede verificar estos detalles iniciando sesión en la interfaz de usuario de File Analytics:
+
++
+... Inicie sesión en la interfaz de usuario con el nombre de usuario “admin” y la contraseña configurados durante la instalación.
+... Seleccione el icono *Usuario* en la esquina superior derecha de la página y, a continuación, seleccione *Configuración de SAML*.
++
+Compruebe *Ajustes del proveedor de servicios* en el menú desplegable que aparece.
+
++
+image:xcp_image18.png["Ejemplo de configuración de SAML"]
+
++
+Después del registro, recibirá los detalles de los extremos de IDP de su empresa. Debe proporcionar estos metadatos de extremo de IDP a la interfaz de usuario de análisis de archivos.
+
+
+
+
+
+. Proporcione los detalles del IDP:
++
+.. Vaya a *Panel*. Seleccione el icono *Usuario* en la esquina superior derecha de la página y seleccione *Configuración de SAML*.
+.. Introduzca los detalles de IDP que obtuvo después del registro.
++
+*ejemplo*
+
++
+image:xcp_image19.png["Ejemplo de configuración del IDP"]
+
+.. Active la casilla de verificación *Habilitar SAML* para habilitar de forma permanente SSO basado en SAML.
+.. Seleccione *Guardar*.
+.. Cierre la sesión en File Analytics y vuelva a iniciarla.
++
+Se le redirigirá a su página SSO de empresa.
+
+
+
+

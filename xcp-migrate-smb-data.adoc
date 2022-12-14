@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: xcp-migrate-smb-data.html 
+keywords: netapp, xcp, migrate, data, smb, copy, resume, sync, verify 
+summary: Migre datos de SMB 
+---
+= Migre datos de SMB
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Tras planificar la migración con `show` y.. `scan` comandos, puede migrar datos.
+
+
+
+== Copiar
+
+La `copy` El comando analiza y copia toda la estructura del directorio de origen en un recurso compartido SMB de destino. La `copy` comando requiere tener rutas de origen y destino como variables. Los archivos escaneados y copiados, el rendimiento/velocidad y los detalles de tiempo transcurrido se imprimen en la consola una vez cada cinco segundos.
+
+
+NOTE: Durante la operación de copia, puede utilizar el `-preserve-atime` marcar con la `copy` comando para conservar la hora de acceso en el origen.
+
+*Ejemplo:*
+
+[listing]
+----
+C:\xcp>xcp copy \\<source SMB share> \\<destination SMB share>
+----
+Consulte `xcp help copy` para obtener más detalles.
+
+
+
+== Sincr
+
+La `sync` el comando busca cambios y modificaciones en los recursos compartidos de origen y destino en paralelo y aplica las acciones apropiadas (quitar, modificar, cambiar nombre, etc.) al destino para asegurarse de que el destino es idéntico al origen.
+
+El comando SYNC compara el contenido de datos, las marcas de tiempo, los atributos del archivo, la propiedad y la información de seguridad.
+
+
+NOTE: Durante la operación de sincronización, puede utilizar la `-preserve-atime` marcar con la `sync` comando para conservar la hora de acceso en el origen.
+
+*Ejemplo:*
+
+[listing]
+----
+C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
+----
+Consulte `xcp help sync` para obtener más detalles.
+
+
+
+== Verificación
+
+La `verify` el comando lee tanto los recursos compartidos de origen como los de destino y los compara, proporcionando información acerca de lo que es diferente. Puede utilizar el comando en cualquier origen y destino, independientemente de la herramienta utilizada para realizar la copia o la sincronización.
+
+[NOTE]
+====
+* Durante la operación de verificación, puede utilizar la `-preserve-atime` marcar con la `verify` comando para conservar la hora de acceso en el origen.
+* Durante la operación de verificación, puede utilizar la `-noatime` marcar con la `verify` comando para excluir diferencias de tiempo de acceso.
+
+
+====
+*Ejemplo:*
+
+[listing]
+----
+C:\xcp>xcp verify \\<source SMB share> \\<destination SMB share>
+----
+Consulte `xcp help verify` para obtener más detalles.

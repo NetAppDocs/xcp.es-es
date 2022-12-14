@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: xcp-troubleshoot-xcp-file-analytics-errors.html 
+keywords: netapp, xcp, troubleshoot, troubleshooting, errors, file, anyalytics 
+summary: Resolución de problemas de errores de análisis de archivos XCP 
+---
+= Solucionar errores de análisis de archivos XCP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Revise las soluciones para solucionar problemas.
+
+[cols="40,60"]
+|===
+| Problema | Solución 
+
+
+| Error en el servicio PostgreSQL  a| 
+Ejecute configure de nuevo y seleccione la opción de instalación. Si la instalación anterior se realizó correctamente, puede seleccionar la opción de reparación. Si sigue recibiendo el error, pruebe los pasos del manual de la siguiente manera:
+
+. Reinicie el servicio PostgreSQL:
++
+`sudo systemctl restart postgresql.service`
+
+. Compruebe el estado del servicio:
++
+`sudo systemctl status postgresql.service | grep Active`
+
+
+
+
+
+| Error DEL servicio HTTPD  a| 
+Ejecute configure de nuevo y seleccione la opción de instalación. Si la instalación anterior se realizó correctamente, puede seleccionar la opción de reparación. Si sigue recibiendo el error, pruebe los pasos del manual de la siguiente manera:
+
+. Reinicie LOS servicios HTTPD:
++
+`sudo systemctl restart httpd`
+
+. Verificar el estado del servicio HTTPD:
++
+`sudo systemctl status httpd | grep Active`
+
+
+
+
+
+| No se puede abrir la página de inicio de sesión después de una instalación correcta | Compruebe que el sistema puede hacer ping al equipo Linux donde está instalado XCP File Analytics y QUE HTTPD se está ejecutando. Si los servicios no se están ejecutando, ejecute `configure` y elija la opción de reparación. Compruebe que está utilizando una versión de navegador compatible. Consulte link:https://mysupport.netapp.com/matrix/["IMT"^]. 
+
+
+| Error de inicio de sesión de usuario  a| 
+* Compruebe que está utilizando una versión de navegador compatible. Consulte link:https://mysupport.netapp.com/matrix/["IMT"^].
+* Compruebe que el usuario es “admin” y que la contraseña es correcta.
+* Compruebe que el servicio XCP se está ejecutando emitiendo `xcp service status`.
+* Compruebe que el puerto 5030 esté abierto en Linux. Abra la aplicación en *https:// <linux ip> :5030/api/xcp*, y confirme que el messagereads msg: `Missing Authorization Header`.
+* Compruebe si la `xcp.ini` el archivo está presente en la `/opt/NetApp/xFiles/xcp/` ubicación. Para restablecer la `xcp.ini` Ejecute la secuencia de comandos de configuración y seleccione la opción *reparar*. A continuación, seleccione la opción de menú para *reconstruir archivo xcp.ini*.
+* Ejecute manualmente la `xcp --listen` En la interfaz de línea de comandos y intente iniciar sesión. Si no recibe una solicitud en el servidor, vuelva a comprobar la instalación y los puertos utilizados para la comunicación con el servidor. Después de verificar que la instalación es correcta, ejecute el `service xcp start` para reiniciar el servicio.
+
+
+
+
+| La GUI de XCP no muestra páginas actualizadas | Borre la caché y vuelva a intentarlo 
+
+
+| El servicio XCP no se está iniciando | Para ejecutar la `xcp` utilice `sudo systemctl start xcp` comando. Como alternativa, ejecute la secuencia de comandos de configuración y seleccione la opción *reparar* para iniciar los servicios que se detengan. 
+
+
+| Error al analizar el recurso compartido de archivos | Es posible que el volumen compartido de archivos no sea legible. Compruebe manualmente si el recurso compartido de archivos es accesible o legible ejecutando el `xcp show` comando. Además, compruebe si el `xcp.ini` el archivo se ha eliminado. Si se elimina, vuelva a generar el `xcp.ini` archivo mediante la opción de reparación de secuencia de comandos configure.sh. 
+
+
+| No se pudieron cargar los servidores de archivos | Intente actualizar una página. Si el problema persiste, ejecute manualmente el `xcp show` en el símbolo del sistema y compruebe si puede analizar el servidor de archivos. Si tiene éxito, levante una incidencia con el soporte al cliente de NetApp. Si no se realiza correctamente, compruebe si el servidor de archivos está activo realizando una comprobación manual. Compruebe si la `xcp.ini` los archivos de archivo y licencia se encuentran en la ubicación correcta. Para restablecer la `xcp.ini` Ejecute la secuencia de comandos de configuración y seleccione la opción *reparar*. A continuación, seleccione la opción de menú para *reconstruir archivo xcp.ini.* Compruebe el `xcpfalogs` registra para ver si la licencia necesita renovarse. 
+
+
+| La página de análisis de archivos XCP no se muestra después de reiniciar el sistema | Los servicios XCP podrían estar inactivos. Ejecute la secuencia de comandos de configuración y seleccione la opción *reparar*. Esto reiniciará todos los servicios que estén detenidos. 
+
+
+| El espacio total de un sistema de archivos exportado en un servidor de archivos determinado puede mostrar más espacio en comparación con el almacenamiento físico asignado. | Esto puede suceder cuando hay exportaciones a nivel de qtree dentro del volumen. Por ejemplo, si el tamaño del volumen que se exporta como `/vol1` Tiene 10 GB y hay un qtree dentro del volumen `/vol1/qtree1`, a continuación, la `xcp show` el comando mostrará la `vol1` tamaño como `10 GB` y la `qtree1` tamaño como `10 GB`. XCP File Analytics suma el espacio de ambas exportaciones y proporciona el espacio total, en este caso, `20 GB`. No lo entiende `qtree1` es un espacio lógico. 
+|===

@@ -1,0 +1,53 @@
+---
+sidebar: sidebar 
+permalink: xcp-troubleshoot-xcp-smb-errors.html 
+keywords: netapp, xcp, troubleshoot, troubleshooting, smb, 
+summary: Resolución de problemas de errores XCP SMB 
+---
+= Resolución de problemas de errores XCP SMB
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Revise las soluciones para solucionar problemas.
+
+|===
+| Problema | Solución 
+
+
+| `xcp: ERROR`: Esta licencia ha caducado | Renueve o obtenga la nueva licencia XCP del link:https://xcp.netapp.com/["Sitio XCP"^]. 
+
+
+| Esta copia no tiene licencia | Obtenga el archivo de licencia XCP apropiado. Copie la licencia XCP en `c:\netapp\xcp` En el host XCP. Ejecute el `xcp activate` para activar la licencia 
+
+
+| `xcp: ERROR`: XCP no activado, ejecute primero "Activar" | Descargue la licencia XCP de link:https://xcp.netapp.com/["Sitio XCP"^]. Copie el archivo en el host del cliente XCP Linux en `c:\netapp\xcp` En el host XCP. Ejecute el `xcp activate` para activar la licencia. 
+
+
+| `xcp: ERROR`: No se ha encontrado el archivo de licencia C:\NetApp\XCP\license | Regístrese para obtener la licencia XCP en link:https://xcp.netapp.com/["Sitio XCP"^]. Descargue y copie el archivo de licencia en `C:\NetApp\XCP\` En el host del cliente Windows XCP. 
+
+
+| Error de exploración xcp: No se encuentra el nombre de red | Vuelva a ejecutar el comando con el nombre compartido correcto 
+
+
+| Error de copia xcp: Error al obtener el mensaje de error principal de seguridad de respaldo registrado en el archivo xcp.log:
+`pywintypes.error: (1722, 'LookupAccountName', 'The RPC server is unavailable.')` | Agregue el cuadro de destino en el archivo hosts (`C:\Windows\System32\drivers\etc\hosts`). La entrada del recuadro de destino del almacenamiento de NetApp debe tener el formato siguiente:
+`<data vserver data interface ip>` 1 o más espacios en blanco `<cifs server name>` 
+
+
+| `xcp copy: ERROR` Error al obtener el principal de seguridad de respaldo (postagregar la entrada del cuadro de destino en los archivos de hosts) error messed aged loged in xcp.log file:
+`'No mapping between account names and security IDs was done'` | El usuario/grupo de respaldo no existe en el sistema de destino (cuadro de destino) ni en el directorio activo. Vuelva a ejecutar el comando con las opciones de usuario/grupo de recuperación correctas 
+
+
+| `xcp copy: ERROR` Error al obtener el principal de seguridad de respaldo (postagregar la entrada del cuadro de destino en los archivos de hosts) error messed aged loged in xcp.log file:
+`pywintypes.error: (87, 'LookupAccountName', 'The parameter is incorrect.')` | Parámetro incorrecto para la opción de grupo/usuario de respaldo. Vuelva a ejecutar el comando con la sintaxis correcta para las opciones de usuario/grupo de reserva 
+
+
+| `xcp copy` Con el mensaje de error de migración acl registrado en el archivo xcp.log:
+`pywintypes.error`: `(1314, 'GetNamedSecurityInfo', 'A required privilege is not held by the client.')` | Un usuario se enfrenta a un problema relacionado con descriptores de seguridad porque con los privilegios que posee el usuario de migraciones, XCP sólo puede obtener propietario, grupo y DACL, no puede obtener SACL. Agregue el usuario de migración a la directiva "Administrar registro de auditoría y seguridad" de Active Directory. Referencia: link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["Administrar registro de auditoría y seguridad"^] 
+|===

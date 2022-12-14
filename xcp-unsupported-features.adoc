@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: xcp-unsupported-features.html 
+keywords: xcp, nfs, smb, features, unsupported, configuration 
+summary: Algunas características no son compatibles con XCP NFS o XCP SMB. 
+---
+= Funciones no admitidas
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP NFS no admite las siguientes funciones:
+
+[cols="40,60"]
+|===
+| Nombre de característica | Descripción 
+
+
+| IPv6 | No admite IP versión 6 (IPv6) 
+
+
+| Listas de control de acceso (ACL) de NFSv4 (terceros) | No admite ACL de NFSv4 de NetApp 
+
+
+| Conector POSIX  a| 
+* La `sync` El comando no admite el conector POSIX
+* No debe utilizar el `copy` cuando el origen está activo
+
+
+
+
+| Conector Hadoop Distributed File System (HDFS)  a| 
+* La `sync` El comando no admite el conector HDFS
+* El sistema de archivos HDFS no admite enlaces simbólicos (enlaces simbólicos), enlaces duros o archivos especiales
+* No debe utilizar el `copy` cuando el origen está activo
+
+
+
+
+| ACL | Si el origen no es un sistema de NetApp, XCP no copia ACL. 
+
+
+| Linux | XCP ya no es compatible con distribuciones anteriores de Linux que fueron compatibles con XCP 1.6.3. 
+|===
+XCP SMB no admite las siguientes funciones:
+
+[cols="40,60"]
+|===
+| Nombre de característica | Descripción 
+
+
+| Enlace simbólico de NFS (enlace simbólico) | XCP SMB no admite symlink NFS 
+
+
+| Opción ACL para la exploración | ACL no compatibles con la opción de análisis 
+
+
+| IPv6 | No admite IP versión 6 (IPv6) 
+
+
+| Flujos de datos alternativos NTFS | XCP no admite actualmente flujos de datos alternativos 
+
+
+| Filtros XCP | La opción excluir SMB XCP actualmente excluye directorios basados en su patrón en el filtro y atraviesa el sistema de archivos de esos directorios. 
+
+
+| Soporte de código fuente activo | XCP no admite el uso de una línea base o una copia instantánea incremental seguida de la migración de origen en directo para una sincronización incremental. 
+|===
+Las siguientes características comunes no están disponibles para XCP NFS y SMB:
+
+* *XCP varias instancias en el mismo host*: Cuando se ejecutan varias instancias de XCP en el mismo host, puede obtener resultados impredecibles.
+* *Tiempo para completar la migración*: XCP upfront no proporciona el tiempo para completar la migración o el tiempo para completar cualquier comando usado para la migración. Si realiza la transición final, confirme que la pérdida de datos en el volumen de origen es baja.
+* *Ejecutando de nuevo la copia en un destino no limpio*: La copia de línea de base de XCP fallará cuando haya datos parciales en el destino de destino. Para que la copia de la línea de base de XCP sea correcta y la verificación de XCP, el destino debe estar limpio.
+* *Live destination*: XCP no admite la modificación de datos en el volumen de destino durante una migración o durante una sincronización incremental.
+* *Usuario no raíz para File Analytics*: XCP no admite instalaciones y configuraciones realizadas por un usuario que no sea raíz o un usuario sudo.
+

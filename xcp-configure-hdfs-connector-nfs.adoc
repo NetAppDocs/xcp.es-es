@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-hdfs-connector-nfs.html 
+keywords: xcp, nfs, hdfs, connector, configure 
+summary: El conector HDFS proporciona a XCP la capacidad de acceder a cualquier sistema de archivos HDFS que esté disponible con diferentes proveedores. 
+---
+= Configurar el conector HDFS
+:allow-uri-read: 
+
+
+[role="lead"]
+Para XCP NFS, el conector del sistema de archivos distribuidos de Hadoop (HDFS) (hdfs://) ofrece a XCP la capacidad de acceder a cualquier sistema de archivos HDFS que esté disponible con diferentes proveedores.
+
+.Funciones admitidas
+La `copy` El funcionamiento del comando desde HDFS a NFS se admite en los conectores HDFS.
+
+.Sintaxis de ruta
+La sintaxis de la ruta para un conector HDFS es `hdfs://[user@host:port]/full-path`.
+
+
+NOTE: Si no especifica un usuario, host y puerto, llamadas XCP `hdfsConnect` con el host establecido en `default` y el puerto establecido en `0`.
+
+.Configure un conector HDFS
+Para ejecutar HDFS `copy` Comando, debe establecer el cliente HDFS en el sistema Linux y, basado en el proveedor de Hadoop, siga la configuración de configuración disponible en Internet. Por ejemplo, puede establecer el cliente de un clúster de MapR mediante `https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient-redhat.html`.
+
+Después de completar la configuración del cliente HFDS, debe completar la configuración en el cliente. Para utilizar las rutas HDFS con comandos XCP, debe tener las siguientes variables de entorno:
+
+* NHDFS_LIBHDFS_PATH
+* NHDFS_LIBJVM_PATH
+
+
+En los siguientes ejemplos, los ajustes funcionan con MapR y java-1.8.0-openjdk-devel en CentOS:
+
+[listing]
+----
+export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $
+(which javac)))))
+export NHDFS_LIBJVM_PATH=`find $JAVA_HOME -name "libjvm.so"` export
+NHDFS_LIBHDFS_PATH=/opt/mapr/lib/libMapRClient.so
+----
+[listing]
+----
+[demo@mapr0 ~]$ hadoop fs -ls Found 3 items
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d1
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d2
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d3
+----

@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: xcp-filters.html 
+keywords: netapp, xcp, filters, 
+summary: XCP proporciona opciones de filtro que se pueden utilizar en operaciones XCP 
+---
+= Filtros
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP proporciona opciones de filtro que se pueden utilizar en operaciones XCP.
+
+XCP utiliza filtros para `-match` y.. `-exclude` Opciones para NFS y SMB.
+
+Para NFS, ejecute `xcp help info` Y consulte la sección DE FILTROS para ver cómo usar `-match` y.. `-exclude` filtros.
+
+Para SMB, ejecute `xcp help -match` y.. `xcp help -exclude` para obtener más información acerca de `match` y.. `exclude` filtros.
+
+Si desea utilizar filtros en los comandos XCP, ejecute `xcp help <command>` para ver si son opciones compatibles.

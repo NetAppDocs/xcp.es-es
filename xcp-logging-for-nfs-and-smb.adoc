@@ -1,0 +1,159 @@
+---
+sidebar: sidebar 
+permalink: xcp-logging-for-nfs-and-smb.html 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb 
+summary: Registro para XCP NFS y SMB 
+---
+= Registro para NFS y SMB (opcional)
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Registro para XCP NFS y SMB.
+
+XCP admite la configuración de varias funciones opcionales mediante el `xcpLogConfig.json` Archivo de configuración JSON. Para habilitar sólo funciones específicas, cree manualmente la `xcpLogConfig.json` archivo de configuración. Puede utilizar el `xcpLogConfig.json` archivo de configuración para habilitar:
+
+* mensajes del registro de eventos
+* Cliente syslog para XCP
+* Registro XCP personalizado
+
+
+Los mensajes del registro de eventos y el cliente de syslog están deshabilitados en la configuración predeterminada. La configuración es común para NFS y SMB.
+
+|===
+| Configurar la ubicación del archivo JSON | NFS | SMB 
+
+
+| Ubicación predeterminada del archivo de configuración | /Opt/NetApp/xFiles/xcp/ | C:\NetApp\XCP\ConfigFile 
+
+
+| La ubicación personalizada requiere la `XCP_CONFIG_DIR` variable de entorno | Utilice la ubicación que ha establecido en `XCP_CONFIG_DIR` variable | N.A. 
+|===
+Las opciones del archivo de configuración JSON distinguen mayúsculas de minúsculas. Estas opciones son las mismas para XCP NFS y XCP SMB.
+
+[cols="20,15,15,50"]
+|===
+| Nombre de las subopciones | Tipo de datos JSON | Predeterminado | Descripción 
+
+
+| LogConfig |  |  | Opción para personalizar el registro XCP. 
+
+
+| "nivel" | Cadena | INFORMACIÓN | Nivel de filtro de gravedad de los mensajes de registro. Los mensajes de registro XCP admiten cinco niveles de gravedad por orden de disminución de gravedad: CRÍTICO, ERROR, ADVERTENCIA, INFORMACIÓN, DEPURACIÓN (NetApp recomienda encarecidamente utilizar INFO o DEBUG). 
+
+
+| “Maxbytes” | Entero | 52428800 | Tamaño de cada archivo de registro giratorio. El número máximo de archivos de rotación admitidos es 10. 
+
+
+| “nombre” | Cadena | xcp.log | Opción para establecer el nombre del archivo de registro personalizado. 
+
+
+| eventlog |  |  | Opción para configurar el mensaje de registro de eventos. 
+
+
+| “IsEnabled” | Booleano | falso | Esta opción booleana se utiliza para habilitar la mensajería de eventos. Configuración en `false` no generará ningún mensaje de evento y no se publicará ningún registro de eventos en el archivo de registro de eventos. 
+
+
+| "nivel" | Cadena | INFORMACIÓN | Nivel de filtro de gravedad de mensajes de eventos. La mensajería de eventos admite cinco niveles de gravedad en orden decreciente: CRÍTICO, ERROR, ADVERTENCIA, INFORMACIÓN, DEPURACIÓN 
+
+
+| syslog |  |  | Opción para configurar la mensajería de syslog. 
+
+
+| “IsEnabled” | Booleano | falso | Esta opción booleana se utiliza para habilitar el cliente de syslog en XCP. 
+
+
+| "nivel" | Cadena | INFORMACIÓN | Nivel del filtro de gravedad del mensaje. Los mensajes de registro de sucesos XCP admiten cinco niveles de gravedad en orden de disminución de gravedad: CRÍTICO, ERROR, ADVERTENCIA, INFORMACIÓN, DEPURACIÓN 
+
+
+| “ServerIP” | Cadena | Ninguno | Nombre de host o direcciones IP del servidor de syslog remoto. 
+
+
+| “puerto” | Entero | 514 | Puerto del receptor de syslog remoto. Los receptores de syslog que aceptan datagramas de syslog en un puerto diferente se pueden configurar con la opción de puerto UDP puerto 514, pero también se puede configurar para el puerto deseado. 
+
+
+| “higienizar” | Booleano | falso  a| 
+Una opción común para la compatibilidad con XCP; al establecer su valor en true, se oculta la información confidencial (IP y nombre de usuario) en los mensajes que se van a admitir (registro, eventos, syslog, etc.). Por ejemplo, con el `sanitize` opción como `false`: *	`2020-07-17 03:10:23,779 - INFO - 12806 xcp xcp Paths: ['10.234.104.251:/cat_vol']`*	`2020-07-17 03:10:23,778 - INFO - 12806 xcp xcp User Name: root`Con la `sanitize` opción como `true`: *	`2020-07-17 03:13:51,596 - INFO - 12859 xcp xcp Paths: ['IP: XX.XX.XX.XX:/cat_vol']`*	`2020-07-17 03:13:51,595 - INFO - 12859 xcp xcp User Name: * * *`
+
+|===
+
+
+== Cree el archivo de configuración JSON
+
+Si desea habilitar los mensajes del registro de eventos, el cliente syslog o el registro de clientes, complete los siguientes pasos.
+
+.Pasos
+. Abra cualquier editor de texto, como bloc de notas o vi.
+. Cree un archivo nuevo con la siguiente plantilla JSON.
++
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "eventlog": {
+    "isEnabled": false,
+    "level": "INFO"
+  },
+  "syslog": {
+    "isEnabled": false,
+    "level": "INFO",
+    "serverIp": "10.234.219.87",
+    "port": 514
+  },
+  "sanitize": false
+}
+----
+. Para las funciones que desee activar, cambie la `isEnabled` valor a. `true`.
+. Asigne un nombre al archivo `xcpLogConfig.json` Y guárdelo en la ubicación predeterminada: /Opt/NetApp/xFiles/xcp/
++
+Si la `XCP_CONFIG_DIR` se establece la variable de entorno, guarde la `xcpLogConfig.json` archivo en la misma ubicación que se establece en la `XCP_CONFIG_DIR` variable.
+
+
+
+|===
+| Configuración predeterminada | Archivo de configuración del json de ejemplo 
+
+
+ a| 
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "sanitize": false
+}
+---- a| 
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "eventlog": {
+    "isEnabled": false,
+    "level": "INFO"
+  },
+  "syslog": {
+    "isEnabled": false,
+    "level": "INFO",
+    "serverIp": "10.234.219.87",
+    "port": 514
+  },
+  "sanitize": false
+}
+----
+|===

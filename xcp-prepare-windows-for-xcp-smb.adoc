@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: xcp-prepare-windows-for-xcp-smb.html 
+keywords: netapp, xcp, prepare, preparing, preparation, windows, 
+summary: Prepare Windows para XCP SMB 
+---
+= Prepare Windows para XCP SMB
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP SMB utiliza sistemas host cliente Windows para generar flujos de I/o paralelos y utilizar completamente el rendimiento de la red y del almacenamiento disponibles.
+
+
+
+== Configurar el almacenamiento
+
+Las transiciones y migraciones de XCP SMB tienen los siguientes requisitos de inicio de sesión de usuario:
+
+* Sistema host XCP: Un usuario host XCP debe tener privilegios de administrador (el usuario debe formar parte del grupo "BUILTIN\Administrators" en el sistema host SMB XCP).
+* Agregue el usuario host de migración o XCP a la directiva de registro de auditoría y seguridad de Active Directory. Para buscar la directiva 'gestionar auditoría y registro de seguridad' en Windows 10, siga estos pasos:
++
+.Pasos
+.. Abra el cuadro de diálogo *Editor de directivas de grupo*.
+.. Vaya a *Configuración del equipo > Configuración de Windows > Configuración de seguridad > Directivas locales > asignación de derechos de usuario*.
+.. Seleccione *Registro de auditoría y seguridad de mange*.
+.. Para agregar un usuario host XCP, seleccione *Agregar usuario o grupo*.
++
+Para obtener más información, consulte: link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953(v%3Dws.11)["Administrar registro de auditoría y seguridad"^].
+
+
+
+* Sistema de almacenamiento de destino: El usuario host XCP debe tener acceso de lectura y escritura.
+* Sistema de almacenamiento de origen:
++
+** Si el usuario forma parte del grupo “operadores de copia de seguridad” en el sistema de almacenamiento de origen, los miembros de este grupo pueden leer archivos sin tener en cuenta las reglas de seguridad, independientemente de los permisos que los protejan.
+** Si el usuario no forma parte del grupo “operadores de copia de seguridad” en el sistema de origen, el usuario debe tener acceso de lectura.
+
+
+
+
+
+NOTE: Se requiere permiso de escritura en el sistema de almacenamiento de origen para admitir la opción XCP `- preserve-atime`.
+
+
+
+== Configurar un cliente Windows
+
+* Agregue el cuadro de almacenamiento de destino y el cuadro de almacenamiento de origen al archivo host:
++
+.. Desplácese a la siguiente ubicación: `(C:\Windows\System32\drivers\etc\hosts)`
+.. Inserte las siguientes entradas de host en el archivo con el siguiente formato:
++
+`<Source data vserver data interface ip>   <Source cifs server name>
+<Destination data vserver data interface ip>   <Destination cifs server name>`
+
++
+*ejemplo*
+
++
+image:xcp_image17.png["archivo de hosts de ejemplo"]
+
+
+
+
