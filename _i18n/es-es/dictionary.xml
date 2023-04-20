@@ -310,7 +310,6 @@
   <block id="f4915fbc2a7713a0eeea8adce10091de" category="cell">Filtros XCP</block>
   <block id="ca2e34fd1c2de7fa4ca5bb236706760b" category="cell">La opción excluir SMB XCP actualmente excluye directorios basados en su patrón en el filtro y atraviesa el sistema de archivos de esos directorios.</block>
   <block id="76e35710ec65c5c13523e53f9290946d" category="cell">Soporte de código fuente activo</block>
-  <block id="4df0ea8d6ab650858ac62da3aa9f0f41" category="cell">XCP no admite el uso de una línea base o una copia instantánea incremental seguida de la migración de origen en directo para una sincronización incremental.</block>
   <block id="abef06ad7d7930b60b54d21ecda87d96" category="paragraph">Las siguientes características comunes no están disponibles para XCP NFS y SMB:</block>
   <block id="67563b580602624cbe59ec4a7939e8fe" category="list-text">*XCP varias instancias en el mismo host*: Cuando se ejecutan varias instancias de XCP en el mismo host, puede obtener resultados impredecibles.</block>
   <block id="163e080f44afc4f1a3717f3330b0859b" category="list-text">*Tiempo para completar la migración*: XCP upfront no proporciona el tiempo para completar la migración o el tiempo para completar cualquier comando usado para la migración. Si realiza la transición final, confirme que la pérdida de datos en el volumen de origen es baja.</block>
@@ -784,4 +783,7 @@
   <block id="ef8cdecd9388166741c6ddeb9e648a30" category="sidebar">Configurar XCP</block>
   <block id="43f3f6a392074dfc63604c7b136e457f" category="sidebar">Configure el archivo INI para XCP NFS</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">Solucionar problemas</block>
+  <block id="c7d37295c1bdef1e9ae306db70634663" category="cell">XCP no admite la combinación de operaciones de copias Snapshot básicas o incrementales con migraciones de código activo.</block>
+  <block id="dbef0b1dd5263aa13674ecebca1b7756" category="cell">Migración de origen activo</block>
+  <block id="93571d5812c4c39edcca3e27487acbe9" category="cell">XCP no admite la modificación de datos en el volumen de origen durante la migración.</block>
 </blocks>

@@ -46,6 +46,9 @@ XCP NFS no admite las siguientes funciones:
 
 
 | Linux | XCP ya no es compatible con distribuciones anteriores de Linux que fueron compatibles con XCP 1.6.3. 
+
+
+| Soporte de código fuente activo | XCP no admite la combinación de operaciones de copias Snapshot básicas o incrementales con migraciones de código activo. 
 |===
 XCP SMB no admite las siguientes funciones:
 
@@ -69,7 +72,7 @@ XCP SMB no admite las siguientes funciones:
 | Filtros XCP | La opción excluir SMB XCP actualmente excluye directorios basados en su patrón en el filtro y atraviesa el sistema de archivos de esos directorios. 
 
 
-| Soporte de código fuente activo | XCP no admite el uso de una línea base o una copia instantánea incremental seguida de la migración de origen en directo para una sincronización incremental. 
+| Migración de origen activo | XCP no admite la modificación de datos en el volumen de origen durante la migración. 
 |===
 Las siguientes características comunes no están disponibles para XCP NFS y SMB:
 
