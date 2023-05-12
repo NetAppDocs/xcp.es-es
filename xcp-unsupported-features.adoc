@@ -42,9 +42,6 @@ XCP NFS no admite las siguientes funciones:
 
 
 
-| ACL | Si el origen no es un sistema de NetApp, XCP no copia ACL. 
-
-
 | Linux | XCP ya no es compatible con distribuciones anteriores de Linux que fueron compatibles con XCP 1.6.3. 
 
 
