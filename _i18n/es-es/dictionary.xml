@@ -296,8 +296,6 @@
   <block id="90637cbab382a9675c5bad0c7aeef15f" category="cell">Conector Hadoop Distributed File System (HDFS)</block>
   <block id="b03665438ed7a747020c197d671b61c3" category="list-text">La<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> El comando no admite el conector HDFS</block>
   <block id="f5f0878108a9a99caae85df13ed2e0ac" category="list-text">El sistema de archivos HDFS no admite enlaces simbólicos (enlaces simbólicos), enlaces duros o archivos especiales</block>
-  <block id="3fabfbd2744533c3c888e15445477652" category="cell">ACL</block>
-  <block id="3706b1828c935d3a1a30b30080320b22" category="cell">Si el origen no es un sistema de NetApp, XCP no copia ACL.</block>
   <block id="edc9f0a5a5d57797bf68e37364743831" category="cell">Linux</block>
   <block id="bd2cc77640d48204c25994ade9373d0d" category="cell">XCP ya no es compatible con distribuciones anteriores de Linux que fueron compatibles con XCP 1.6.3.</block>
   <block id="577d13f7684f9c1dad51523d52a28bf9" category="paragraph">XCP SMB no admite las siguientes funciones:</block>
@@ -665,7 +663,6 @@
   <block id="e11089d4b0b741fa37d3bde7e9ece13f" category="summary">Prepare Windows para XCP SMB</block>
   <block id="66f9acc1b514e86b97784fe390326ce3" category="paragraph">XCP SMB utiliza sistemas host cliente Windows para generar flujos de I/o paralelos y utilizar completamente el rendimiento de la red y del almacenamiento disponibles.</block>
   <block id="c8fe60bf1229083e3bb54f5366226e26" category="paragraph">Las transiciones y migraciones de XCP SMB tienen los siguientes requisitos de inicio de sesión de usuario:</block>
-  <block id="511057ab7032e10b44554037f83be0f0" category="list-text">Sistema host XCP: Un usuario host XCP debe tener privilegios de administrador (el usuario debe formar parte del grupo "BUILTIN\Administrators" en el sistema host SMB XCP).</block>
   <block id="543905c9e8d793e24798d62739fd285b" category="list-text">Agregue el usuario host de migración o XCP a la directiva de registro de auditoría y seguridad de Active Directory. Para buscar la directiva 'gestionar auditoría y registro de seguridad' en Windows 10, siga estos pasos:</block>
   <block id="efaadd4be852741a24b28d66addf7e17" category="list-text">Abra el cuadro de diálogo *Editor de directivas de grupo*.</block>
   <block id="58f61041ffa1d14e245af8a57dce1c48" category="list-text">Vaya a *Configuración del equipo &gt; Configuración de Windows &gt; Configuración de seguridad &gt; Directivas locales &gt; asignación de derechos de usuario*.</block>
@@ -786,4 +783,5 @@
   <block id="c7d37295c1bdef1e9ae306db70634663" category="cell">XCP no admite la combinación de operaciones de copias Snapshot básicas o incrementales con migraciones de código activo.</block>
   <block id="dbef0b1dd5263aa13674ecebca1b7756" category="cell">Migración de origen activo</block>
   <block id="93571d5812c4c39edcca3e27487acbe9" category="cell">XCP no admite la modificación de datos en el volumen de origen durante la migración.</block>
+  <block id="61355ec3f68ee20926a222027dcb3d7b" category="list-text">Sistema host XCP: Un usuario host XCP debe tener privilegios de administrador (el usuario debe formar parte del grupo BUILTIN\Administrators en el servidor SMB de destino).</block>
 </blocks>

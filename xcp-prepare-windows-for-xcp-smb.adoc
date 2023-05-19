@@ -22,7 +22,7 @@ XCP SMB utiliza sistemas host cliente Windows para generar flujos de I/o paralel
 
 Las transiciones y migraciones de XCP SMB tienen los siguientes requisitos de inicio de sesión de usuario:
 
-* Sistema host XCP: Un usuario host XCP debe tener privilegios de administrador (el usuario debe formar parte del grupo "BUILTIN\Administrators" en el sistema host SMB XCP).
+* Sistema host XCP: Un usuario host XCP debe tener privilegios de administrador (el usuario debe formar parte del grupo BUILTIN\Administrators en el servidor SMB de destino).
 * Agregue el usuario host de migración o XCP a la directiva de registro de auditoría y seguridad de Active Directory. Para buscar la directiva 'gestionar auditoría y registro de seguridad' en Windows 10, siga estos pasos:
 +
 .Pasos
