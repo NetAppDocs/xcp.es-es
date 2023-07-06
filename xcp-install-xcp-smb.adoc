@@ -40,7 +40,7 @@ NOTE: No hay opción para actualizar; reinstale XCP para reemplazar cualquier ve
 | Versión de protocolo compatible | Todas las versiones de los protocolos SMB 
 
 
-| Explorador compatible (solo análisis de archivos) | XCP File Analytics es compatible con Google Chrome versión 76 y posteriores. Consulte la matriz IMT para obtener información sobre todas las versiones compatibles del explorador 
+| Explorador compatible (solo análisis de archivos) | Consulte la link:https://mysupport.netapp.com/matrix/["IMT"^] Matrix para todas las versiones de explorador compatibles para XCP File Analytics. 
 |===
 
 

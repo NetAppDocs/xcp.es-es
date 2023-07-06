@@ -56,7 +56,7 @@ Las opciones del archivo de configuración JSON distinguen mayúsculas de minús
 | eventlog |  |  | Opción para configurar el mensaje de registro de eventos. 
 
 
-| “IsEnabled” | Booleano | falso | Esta opción booleana se utiliza para habilitar la mensajería de eventos. Configuración en `false` no generará ningún mensaje de evento y no se publicará ningún registro de eventos en el archivo de registro de eventos. 
+| “IsEnabled” | Booleano | verdadero | Esta opción booleana se utiliza para habilitar la mensajería de eventos. Configuración en `false` no generará ningún mensaje de evento y no se publicará ningún registro de eventos en el archivo de registro de eventos. 
 
 
 | "nivel" | Cadena | INFORMACIÓN | Nivel de filtro de gravedad de mensajes de eventos. La mensajería de eventos admite cinco niveles de gravedad en orden decreciente: CRÍTICO, ERROR, ADVERTENCIA, INFORMACIÓN, DEPURACIÓN 

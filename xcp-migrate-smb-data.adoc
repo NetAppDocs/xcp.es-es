@@ -60,9 +60,7 @@ La `verify` el comando lee tanto los recursos compartidos de origen como los de 
 
 [NOTE]
 ====
-* Durante la operación de verificación, puede utilizar la `-preserve-atime` marcar con la `verify` comando para conservar la hora de acceso en el origen.
-* Durante la operación de verificación, puede utilizar la `-noatime` marcar con la `verify` comando para excluir diferencias de tiempo de acceso.
-
+Durante la operación de verificación, puede utilizar la `-preserve-atime` marcar con la `verify` comando para conservar la hora de acceso en el origen.
 
 ====
 *Ejemplo:*

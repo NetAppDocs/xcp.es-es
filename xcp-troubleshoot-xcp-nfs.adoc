@@ -114,7 +114,23 @@ Revise las soluciones para solucionar problemas.
 | `xcp: ERROR: batch 2: child process failed (exit code -6): recv <type 'exceptions.EOFError'>:` | Aumente la memoria del sistema y vuelva a ejecutar la prueba. 
 
 
-| `xcp:ERROR: invalid path 'IP:/users009/user1/2022-07-01_04:36:52_1489367` | Si hay dos puntos (:) en la ruta de acceso del archivo, utilice tres puntos (:::) en su lugar. 
+| `xcp:ERROR: invalid path 'IP:/users009/user1/2022-07-01_04:36:52_1489367` | Si hay uno o más puntos en el nombre de ruta de acceso compartido del servidor NFS, utilice dos puntos (:) en lugar de un solo punto (:) para separar la IP del servidor NFS y la ruta de acceso compartida del servidor NFS. 
+
+
+| El volumen SnapLock no conserva los archivos WORM después de un `xcp copy` funcionamiento.  a| 
+XCP copia correctamente los ARCHIVOS WORM al volumen, pero el volumen SnapLock no conserva los archivos.
+
+. Ejecute el `xcp copy` operación desde el volumen de origen al de destino:
+`xcp copy src_server:/src_export dst_server:/dst_export`
+. Utilice la `xcp chmod` comando para cambiar los permisos de archivo en el volumen de destino a *readonly*:
+`xcp chmod -mode  a-w  dst_server:/dst_export`
+
+
+Una vez finalizados los pasos anteriores, el volumen SnapLock comienza a conservar los archivos copiados.
+
+
+NOTE: El tiempo de retención de un volumen SnapLock se rige por la política de retención predeterminada del volumen. Compruebe la configuración de retención de volúmenes antes de iniciar la migración: link:https://docs.netapp.com/us-en/ontap/snaplock/set-retention-period-task.html["Establezca el tiempo de retención"^]
+
 |===
 
 

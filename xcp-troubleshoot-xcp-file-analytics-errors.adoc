@@ -81,4 +81,36 @@ Ejecute configure de nuevo y seleccione la opción de instalación. Si la instal
 
 
 | El espacio total de un sistema de archivos exportado en un servidor de archivos determinado puede mostrar más espacio en comparación con el almacenamiento físico asignado. | Esto puede suceder cuando hay exportaciones a nivel de qtree dentro del volumen. Por ejemplo, si el tamaño del volumen que se exporta como `/vol1` Tiene 10 GB y hay un qtree dentro del volumen `/vol1/qtree1`, a continuación, la `xcp show` el comando mostrará la `vol1` tamaño como `10 GB` y la `qtree1` tamaño como `10 GB`. XCP File Analytics suma el espacio de ambas exportaciones y proporciona el espacio total, en este caso, `20 GB`. No lo entiende `qtree1` es un espacio lógico. 
+
+
+| No se puede acceder al sitio o el inicio de sesión del usuario falló después de una instalación correcta.  a| 
+. Compruebe si los servicios XCP se están ejecutando:
+`service xcp status`
+. Inicie la operación de escucha de XCP y confirme que no hay errores:
++
+`xcp –listen`
+
+. Si ve el siguiente error, instale los paquetes CodeReady usando yum, como `yum install codeready-builder-for-rhel-8-x86_64-rpms`:
+
+
+[listing]
+----
+Error:
+-------
+Traceback (most recent call last):
+  File "xcp.py", line 1146, in <module>
+  File "xcp.py", line 1074, in main
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "PyInstaller/loader/pyimod03_importers.py", line 495, in exec_module
+  File "rest/routes.py", line 61, in <module>
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "PyInstaller/loader/pyimod03_importers.py", line 495, in exec_module
+  File "onelogin/saml2/auth.py", line 14, in <module>
+xmlsec.Error: (1, 'cannot load crypto library for xmlsec.')
+[23891] Failed to execute script 'xcp' due to unhandled exception!
+----
 |===

@@ -22,7 +22,7 @@ Si desea actualizar XCP, elimine la instalación actual y sustitúyala por una n
 | Elemento | Requisito 
 
 
-| Sistema | Servidor Intel o AMD de 64 bits, mínimo 4 núcleos y 32 GB de RAM 
+| Sistema | Servidor Intel o AMD de 64 bits, mínimo 8 núcleos y 64 GB de RAM 
 
 
 | Sistema operativo y software | RHEL8. Consulte link:https://mysupport.netapp.com/matrix/["IMT"^] para sistemas operativos compatibles 
@@ -37,7 +37,7 @@ Si desea actualizar XCP, elimine la instalación actual y sustitúyala por una n
 | Versión de protocolo compatible | NFSv3 y NFSv4 (POSIX y ACL) 
 
 
-| Explorador compatible (solo análisis de archivos) | XCP File Analytics es compatible con Google Chrome versión 76 y posteriores. Consulte link:https://mysupport.netapp.com/matrix/["IMT"^] matrix para todas las versiones compatibles del navegador 
+| Explorador compatible (solo análisis de archivos) | Consulte la link:https://mysupport.netapp.com/matrix/["IMT"^] Matrix para todas las versiones de explorador compatibles para XCP File Analytics. 
 |===
 
 NOTE: La configuración recomendada para la migración de fuentes activas es de 8 núcleos y 64 GB de RAM.

@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-s3-connector-nfs.html 
+keywords: xcp, configure, nfs, S3, connector 
+summary: El conector S3 proporciona a XCP la capacidad de migrar datos desde un sistema de archivos NFS o HDFS al almacenamiento de objetos S3 
+---
+= Configure el conector S3
+:allow-uri-read: 
+
+
+[role="lead"]
+A partir de XCP 1,9.2, el conector Simple Storage Service (S3) mejora el alcance de la migración de datos de XCP permitiendo la migración de datos desde sistemas de archivos Hadoop Distributed File System (HDFS) al almacenamiento de objetos S3.
+
+.Casos de uso de migración admitidos
+Los conectores S3 admiten los siguientes casos de uso de migración:
+
+* Migración desde HDFS o NFS a NetApp StorageGRID
+* Migración de HDFS o NFS a Amazon S3
+* Migración de HDFS o NFS a NetApp ONTAP S3
+
+
+
+NOTE: Actualmente MapR solo está cualificado y es compatible con HDFS.
+
+.Funciones admitidas
+Compatibilidad con `scan`, `copy`, `verify`, `resume` y.. `delete` Los comandos están disponibles para los conectores S3.
+
+.Operaciones no admitidas
+Compatibilidad con `sync` El comando no está disponible para los conectores S3.
+
+.Sintaxis de ruta
+La sintaxis de ruta para el conector S3 es `s3://<bucket in S3>`.
+
+* Puede proporcionar un perfil S3 específico para los comandos XCP mediante el `-s3.profile` opción.
+* Puede utilizar el `s3.endpoint` Opción para modificar el valor de punto final para comunicarse con S3
+
+
+
+NOTE: El uso del punto final es obligatorio para StorageGRID y ONTAP S3.
+
+
+
+== Configure un conector S3
+
+.Pasos
+. Para ejecutar el comando XCP con el conector S3, cree un bucket en S3 siguiendo la documentación en línea para las respectivas plataformas:
++
+** link:https://docs.netapp.com/us-en/ontap/object-storage-management/index.html["Gestión del almacenamiento de objetos de ONTAP S3"^]
+** link:https://docs.netapp.com/us-en/storagegrid-116/tenant/index.html["StorageGRID: Utilice una información general de la cuenta de inquilinos"^]
++
+
+NOTE: Antes de continuar, debe tener el `access key`, `secret key`, Certificado de autoridad (CA) paquete de certificados, y. `endpoint url` información. XCP identifica y se conecta al cubo S3 mediante estos parámetros antes de iniciar una operación.
+
+
+
+. Instale los paquetes de la CLI de Amazon Web Services (AWS) y ejecute los comandos de la CLI de AWS para configurar las claves y los certificados SSL (Secure Sockets Layer) para las cuentas S3:
++
+** Consulte link:https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html["Instalar o actualizar la versión más reciente de la CLI de AWS"^] Para instalar los paquetes de AWS.
+** Consulte link:https://docs.aws.amazon.com/cli/latest/reference/configure/set.html["Referencia de comandos de la CLI de AWS"^] si quiere más información.
+
+
+. Utilice la `aws configure` comando para configurar el archivo de credenciales. De forma predeterminada, la ubicación del archivo es `/root/.aws/credentials`. El archivo de credenciales debe especificar la clave de acceso y la clave de acceso secreta.
+. Utilice la `aws configure set` Comando para especificar un paquete de certificado de CA, que es un archivo con el `.pem` Extensión que se utiliza al verificar certificados SSL. De forma predeterminada, la ubicación del archivo es `/root/.aws/config`.
++
+*Ejemplo:*
+
++
+[listing]
+----
+[root@client1 ~]# aws configure
+AWS Access Key ID [None]: <access_key>
+AWS Secret Access Key [None]: <secret_key>
+Default region name [None]:
+Default output format [None]:
+[root@client1 ~]# cat /root/.aws/credentials
+[default]
+aws_access_key_id = <access_key>
+aws_secret_access_key = <secret_key>
+[root@client1 ~]#
+[root@client1 ~]# aws configure set default.ca_bundle /u/xxxx/s3/ca/aws_cacert.pem
+[root@client1 ~]# cat /root/.aws/config
+[default]
+ca_bundle = /u/xxxx/s3/ca/aws_cacert.pem
+----
+. Tras completar la configuración de instalación necesaria, confirme que los comandos de la CLI de AWS pueden acceder a los buckets S3 desde el cliente Linux antes de ejecutar los comandos XCP:
+`aws s3 ls --endpoint-url <endpoint_url> s3://bucket-name/`
++
+`aws s3 ls --profile <profile> --endpoint-url <endpoint_url> s3://bucket-name`
+
++
+*Ejemplo:*
+
++
+[listing]
+----
+[root@client1 linux]# aws s3 ls --profile <profile> --endpoint <endpoint_url>  s3://<bucket-name>
+                           PRE 1G/
+                           PRE aws_files/
+                           PRE copied_folders/
+                           PRE d1/
+                           PRE d2/
+                           PRE giant_size_dirs/
+                           PRE medium_size_dirs/
+                           PRE small_size_dirs/
+[root@client1 l
+----
+
