@@ -36,7 +36,7 @@ Puede descargar XCP desde link:https://mysupport.netapp.com/products/p/xcp.html[
 
 == Licencia XCP
 
-NetApp ofrece una licencia XCP gratuita de 90 días. Puede obtener el archivo de licencia del link:https://xcp.netapp.com/["Sitio XCP"^]. El portal de licencias ofrece diferentes opciones de licencia. Después de 90 días puede renovar la licencia por otros 90 días utilizando el mismo portal.
+NetApp ofrece una licencia XCP gratuita de un año. Puede obtener el archivo de licencia del link:https://xcp.netapp.com/["Sitio XCP"^]. El portal de licencias ofrece diferentes opciones de licencia. Después de un año, puede renovar la licencia por otro año utilizando el mismo portal.
 
 La licencia XCP está disponible como licencia en línea o sin conexión. Si desea enviar estadísticas de migración, utilice una licencia en línea. La licencia en línea requiere una conexión a Internet. La licencia sin conexión no requiere conexión a Internet.
 

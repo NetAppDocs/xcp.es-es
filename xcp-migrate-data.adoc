@@ -13,3 +13,73 @@ summary: Migración de datos
 :imagesdir: ./media/
 
 
+[role="lead"]
+Tras planificar la migración con `show` y.. `scan` comandos, puede migrar datos.
+
+
+
+== Copiar
+
+La `copy` El comando analiza y copia toda la estructura del directorio de origen en una exportación NFSv3 de destino. La `copy` comando requiere tener rutas de origen y destino como variables. Los archivos escaneados y copiados, el rendimiento/velocidad y los detalles de tiempo transcurrido se muestran al final de la operación de copia.
+
+*Ejemplo:*
+
+[listing]
+----
+xcp copy -newid <id> src_server:/src_export dst_server:/dst_export
+----
+*Ejemplo de ruta POSIX:*
+
+[listing]
+----
+xcp copy -newid <id> file:///mnt/source file:///mnt/dest
+----
+Consulte `xcp help copy` para obtener más detalles.
+
+
+
+== Reanudar
+
+La `resume` el comando reinicia una operación de copia interrumpida previamente especificando el nombre o número del índice del catálogo. El nombre o número de índice del catálogo de la operación de copia anterior se almacena en la `<catalog path>:/catalog/indexes` directorio.
+
+*Ejemplo:*
+
+[listing]
+----
+xcp resume [options] -id <id used for copy>
+----
+Consulte `xcp help resume` para obtener más detalles.
+
+
+
+== Sincr
+
+La `sync` El comando busca los cambios y modificaciones realizados en un directorio NFS de origen mediante un nombre de código de índice de catálogo o el número de una operación de copia anterior. Los cambios incrementales de origen se copian y aplican al directorio de destino. Los números de índice de catálogo antiguos se sustituyen por uno nuevo [.underline]#después de la operación de sincronización#.
+
+*Ejemplo:*
+
+[listing]
+----
+xcp sync [options] -id <id used for copy>
+----
+Consulte `xcp help sync` para obtener más detalles.
+
+
+
+== Verificación
+
+La `verify` el comando usa una comparación completa de datos byte por byte entre los directorios de origen y destino después de la operación de copia sin usar un número de índice de catálogo. El comando comprueba las horas de modificación y otros atributos de archivo o directorio, incluidos los permisos. El comando también lee los archivos en ambos lados y compara los datos.
+
+*Ejemplo:*
+
+[listing]
+----
+xcp verify src_server:/src_export dst_server:/dst_export
+----
+*Ejemplo de ruta POSIX:*
+
+[listing]
+----
+xcp verify file:///mnt/source file:///mnt/dest
+----
+Consulte `xcp help verify` para obtener más detalles.
