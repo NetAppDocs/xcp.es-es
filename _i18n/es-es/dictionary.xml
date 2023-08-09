@@ -224,9 +224,7 @@
   <block id="0ab4127ba4947453135e709735a6fc6c" category="cell">El usuario/grupo de respaldo no existe en el sistema de destino (cuadro de destino) ni en el directorio activo. Vuelva a ejecutar el comando con las opciones de usuario/grupo de recuperación correctas</block>
   <block id="4be936fd7e612c47d18eaec68c3932c3" category="cell"><block ref="9b3f5c2df0df1db5d50455680ef19138" prefix="" category="inline-code"></block> Error al obtener el principal de seguridad de respaldo (postagregar la entrada del cuadro de destino en los archivos de hosts) error messed aged loged in xcp.log file:<block ref="22a156c55e75c3835a304532e00c9cb2" prefix=" " category="inline-code"></block></block>
   <block id="2e4e559c9f6001c3134b8795d8e47e81" category="cell">Parámetro incorrecto para la opción de grupo/usuario de respaldo. Vuelva a ejecutar el comando con la sintaxis correcta para las opciones de usuario/grupo de reserva</block>
-  <block id="20f0f3784e710ced2f992c9e868a329f" category="cell"><block ref="e64df9c2f5a72d0adb1dbea21a609c16" prefix="" category="inline-code"></block> Con el mensaje de error de migración acl registrado en el archivo xcp.log:<block ref="e2ac862df70b5c80b24bb2eb2b39bb13" prefix=" " category="inline-code"></block>:<block ref="da1b6bcd0d8118b98426d3a306332234" prefix=" " category="inline-code"></block></block>
   <block id="4ba21fa3f242b755c406321b6aa530de" category="inline-link-macro">Administrar registro de auditoría y seguridad</block>
-  <block id="ec548dc7e9c4428d0af475d94ed8628f" category="cell">Un usuario se enfrenta a un problema relacionado con descriptores de seguridad porque con los privilegios que posee el usuario de migraciones, XCP sólo puede obtener propietario, grupo y DACL, no puede obtener SACL. Agregue el usuario de migración a la directiva "Administrar registro de auditoría y seguridad" de Active Directory. Referencia: <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
   <block id="7f9cccf134351e9df9c324fb764603f3" category="summary">Bienvenido a la Biblioteca de información de XCP, incluye enlaces a versiones anteriores.</block>
   <block id="9d2169c1c2855b78a7aeaa4f42d27dc7" category="inline-link-macro">Sitio de soporte de NetApp</block>
   <block id="76c8844b91693e12fac2abf6d423c3f5" category="paragraph">La documentación para versiones anteriores de XCP está disponible en la <block ref="a4ccf985ba56b702a384be031a3cd5f9" category="inline-link-macro-rx"></block>.</block>
@@ -888,4 +886,12 @@
   <block id="9351e261865c10b81be01c7298324b0f" category="list-text">Migración de HDFS a NetApp StorageGRID</block>
   <block id="c19152294b5e6dfeaa6ca9c77e0f12e1" category="list-text">Migración de HDFS a Amazon S3</block>
   <block id="3df8a75d6363358c9c30a90e1f018d65" category="list-text">Migración de HDFS a NetApp ONTAP S3</block>
+  <block id="392f97fdb8ea70faba5877ca90ad7c42" category="paragraph">Se puede producir un error de rastreo si el origen, el destino o ambos son una unión sin directorios y se utiliza una licencia en línea en la migración. Si esto ocurre, el estado del comando XCP es<block ref="269f3d1562cbd15624e7d2c4b10122e3" prefix=" " category="inline-code"></block> pero el siguiente error se devuelve al final de la salida de la consola:</block>
+  <block id="c1397a1836478812e944515ecd5ff969" category="cell">Utilice una licencia fuera de línea en lugar de una licencia en línea.</block>
+  <block id="747dd4d48798d325d388dd4ba57db561" category="cell"><block ref="e64df9c2f5a72d0adb1dbea21a609c16" prefix="" category="inline-code"></block> Con migración ACL
+
+Mensaje de error registrado en el archivo xcp.log:<block ref="e2ac862df70b5c80b24bb2eb2b39bb13" prefix=" " category="inline-code"></block>:<block ref="da1b6bcd0d8118b98426d3a306332234" prefix=" " category="inline-code"></block></block>
+  <block id="5b68f649e30aa676e6765ad7d93ced85" category="cell">Un problema relacionado con los descriptores de seguridad porque la cuenta de usuario de migración sólo tiene los privilegios necesarios para que XCP recupere el propietario, el grupo y la DACL. No puede recuperar SACL.
+Agregue su cuenta de usuario de migración a la política “Administrar auditoría y registro de seguridad” en su Active Directory.
+Referencia: <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
 </blocks>

@@ -20,6 +20,19 @@ Revise las soluciones para solucionar problemas.
 | Problema | Solución 
 
 
+ a| 
+Se puede producir un error de rastreo si el origen, el destino o ambos son una unión sin directorios y se utiliza una licencia en línea en la migración. Si esto ocurre, el estado del comando XCP es `PASSED` pero el siguiente error se devuelve al final de la salida de la consola:
+
+[listing]
+----
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "xcp\stats.py", line 214, in call_home
+  File "xcp\histograms.py", line 387, in calculate_averages
+ZeroDivisionError: division by zero
+----| Utilice una licencia fuera de línea en lugar de una licencia en línea. 
+
+
 | `xcp: ERROR`: Esta licencia ha caducado | Renueve o obtenga la nueva licencia XCP del link:https://xcp.netapp.com/["Sitio XCP"^]. 
 
 
@@ -48,6 +61,10 @@ Revise las soluciones para solucionar problemas.
 `pywintypes.error: (87, 'LookupAccountName', 'The parameter is incorrect.')` | Parámetro incorrecto para la opción de grupo/usuario de respaldo. Vuelva a ejecutar el comando con la sintaxis correcta para las opciones de usuario/grupo de reserva 
 
 
-| `xcp copy` Con el mensaje de error de migración acl registrado en el archivo xcp.log:
-`pywintypes.error`: `(1314, 'GetNamedSecurityInfo', 'A required privilege is not held by the client.')` | Un usuario se enfrenta a un problema relacionado con descriptores de seguridad porque con los privilegios que posee el usuario de migraciones, XCP sólo puede obtener propietario, grupo y DACL, no puede obtener SACL. Agregue el usuario de migración a la directiva "Administrar registro de auditoría y seguridad" de Active Directory. Referencia: link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["Administrar registro de auditoría y seguridad"^] 
+| `xcp copy` Con migración ACL
+
+Mensaje de error registrado en el archivo xcp.log:
+`pywintypes.error`: `(1314, 'GetNamedSecurityInfo', 'A required privilege is not held by the client.')` | Un problema relacionado con los descriptores de seguridad porque la cuenta de usuario de migración sólo tiene los privilegios necesarios para que XCP recupere el propietario, el grupo y la DACL. No puede recuperar SACL.
+Agregue su cuenta de usuario de migración a la política “Administrar auditoría y registro de seguridad” en su Active Directory.
+Referencia: link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["Administrar registro de auditoría y seguridad"^] 
 |===
