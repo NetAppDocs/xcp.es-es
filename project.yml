@@ -9,15 +9,15 @@ settings:
   langs: es-es,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,fr-fr,it-it
 sidebar:
   entries:
-  - title: Inicio
-    url: "/home.html"
+  - title: Documentación de XCP de NetApp
+    url: "/index.html"
   - title: Notas de la versión
     url: "/releasenotes.html"
   - title: Comience a usar XCP
     type: solutions
     entries:
     - title: Más información sobre XCP
-      url: "/index.html"
+      url: "/xcp-index.html"
     - title: Funciones complementarias XCP NFS
       url: "/xcp-nfs-add-ons.html"
     - title: Funciones no admitidas
@@ -70,8 +70,9 @@ sidebar:
     - title: Planifique la migración de datos HDFS
       url: "/xcp-plan-hdfs-data-migration.html"
     - title: Planificar mediante Análisis de archivos
-      url: "/xcp-using-file-analytics.html"
       entries:
+      - title: Planificar la migración de los datos
+        url: "/xcp-file-analytics-plan-data-migration.html"
       - title: Acceda a File Analytics
         url: "/xcp-access-file-analytics.html"
       - title: Agregar servidores de archivos
@@ -102,5 +103,5 @@ sidebar:
       url: "/xcp-troubleshoot-xcp-smb-errors.html"
     - title: Solucionar errores de análisis de archivos XCP
       url: "/xcp-troubleshoot-xcp-file-analytics-errors.html"
-  - title: Obtenga más información
-    url: "/get-more-information.html"
+  - title: Avisos legales
+    url: "/legal-notices.html"

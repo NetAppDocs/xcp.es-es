@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: xcp-index.html 
+keywords: netapp, xcp, about, migration, file analytics, nfs, smb 
+summary: XCP de NetApp permite realizar migraciones de datos escalables y de alto rendimiento 
+---
+= Más información sobre XCP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP de NetApp se ha diseñado para escalar y lograr un mayor rendimiento al utilizar todos los recursos disponibles del sistema para gestionar conjuntos de datos de gran volumen y migraciones de datos de alto rendimiento. XCP le ayuda a obtener una visibilidad completa del sistema de archivos con la opción de generar informes de clientes. Gracias a las capacidades de compatibilidad y formato, puede personalizar los informes para que se adapten a las necesidades de generación de informes.
+
+Utilice XCP para sistemas NFS o SMB como una de las siguientes soluciones:
+
+* Solución de migración
+* Solución de análisis de archivos
+
+
+XCP es un software de línea de comandos disponible en un único paquete que admite protocolos NFS y SMB. XCP está disponible como binario de Linux para conjuntos de datos NFS y está disponible como ejecutable de Windows para conjuntos de datos SMB.
+
+XCP File Analytics es un software basado en host que detecta recursos compartidos de archivos, ejecuta análisis en el sistema de archivos y proporciona un panel para el análisis de archivos. XCP File Analytics funciona tanto para sistemas de NetApp como de terceros y se ejecuta en hosts Linux o Windows para proporcionar análisis para los sistemas de archivos exportados NFS y SMB. El binario de la interfaz gráfica de usuario de análisis de archivos se incluye en el paquete único que admite los protocolos NFS y SMB.
+
+
+NOTE: El binario XCP está firmado por código. Para obtener más información, consulte el README en `NETAPP_XCP_<version>.tgz`.
+
+La CLI de XCP es robusta. Para obtener más información, descargue _XCP Reference_ en link:https://xcp.netapp.com/["Sitio XCP"^].
+
+*Flujo de trabajo XCP*
+
+image:xcp_image1.png["Imagen de flujo de trabajo XCP"]
