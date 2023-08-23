@@ -14,7 +14,7 @@ summary: Migre datos de SMB
 
 
 [role="lead"]
-Tras planificar la migración con `show` y.. `scan` comandos, puede migrar datos.
+Tras planificar la migración con `show` y.. `scan` Comandos, puede migrar datos SMB.
 
 
 
