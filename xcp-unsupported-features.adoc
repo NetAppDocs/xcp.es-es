@@ -34,14 +34,6 @@ XCP NFS no admite las siguientes funciones:
 
 
 
-| Conector Hadoop Distributed File System (HDFS)  a| 
-* La `sync` El comando no admite el conector HDFS
-* El sistema de archivos HDFS no admite enlaces simbólicos (enlaces simbólicos), enlaces duros o archivos especiales
-* No debe utilizar el `copy` cuando el origen está activo
-
-
-
-
 | Linux | XCP ya no es compatible con distribuciones anteriores de Linux que fueron compatibles con XCP 1.6.3. 
 
 
