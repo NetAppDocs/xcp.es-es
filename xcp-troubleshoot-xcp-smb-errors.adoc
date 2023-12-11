@@ -21,6 +21,13 @@ Revise las soluciones para solucionar problemas.
 
 
  a| 
+Los comandos XCP no muestran los resultados esperados si se utiliza una ruta de unión en el origen o el destino.
+ a| 
+Utilice una ruta de acceso compartido de SMB en lugar de una ruta de unión cuando ejecute comandos XCP.
+
+
+
+ a| 
 Se puede producir un error de rastreo si el origen, el destino o ambos son una unión sin directorios y se utiliza una licencia en línea en la migración. Si esto ocurre, el estado del comando XCP es `PASSED` pero el siguiente error se devuelve al final de la salida de la consola:
 
 [listing]

@@ -14,7 +14,7 @@ summary: El conector POSIX ofrece a XCP la capacidad de acceder a cualquier sist
 
 
 [role="lead"]
-A partir de XCP 1,9.2, puede utilizar la función «-minmem» para ejecutar varios trabajos o comandos XCP en un único host XCP, siempre que el host tenga recursos suficientes para cada trabajo. Cuando ejecuta un comando que admite la función «-minmem», XCP utiliza una memoria de host mínima para completar el trabajo, lo que crea la capacidad de ejecutar trabajos adicionales en la misma configuración de host.
+A partir de XCP 1,9.2, puede ejecutar varios trabajos o comandos XCP en un único host XCP, siempre que el host tenga recursos suficientes para cada trabajo. Cuando ejecuta un comando que admite varios trabajos, XCP utiliza una memoria de host mínima para completar el trabajo, lo que crea la capacidad de ejecutar trabajos adicionales en la misma configuración de host.
 
 
 
@@ -23,7 +23,7 @@ A partir de XCP 1,9.2, puede utilizar la función «-minmem» para ejecutar vari
 Para cada trabajo XCP, debe permitir hasta 64GB GB de memoria del host y ocho núcleos para migraciones medianas a grandes.
 
 
-NOTE: La función «-minmem» no es compatible con la migración de datos de SMB.
+NOTE: La ejecución de varios trabajos de XCP en el mismo host no es compatible con la migración de datos de SMB.
 
 
 
@@ -35,7 +35,7 @@ De forma predeterminada, cada trabajo XCP se registra en un archivo de registro 
 
 == Comandos admitidos
 
-La función «-minmem» es compatible con los siguientes comandos XCP:
+La ejecución de varios trabajos XCP en el mismo host se admite con los siguientes comandos XCP:
 
 * `scan`
 * `copy`
@@ -51,28 +51,4 @@ La función «-minmem» es compatible con los siguientes comandos XCP:
 
 == Comandos no admitidos
 
-La función «-minmem» no es compatible con el `sync` comando.
-
-
-
-== Ejemplos de comandos
-
-Para utilizar la función «-minmem», debe incluir la opción «-minmem» en el comando XCP como se muestra en los siguientes ejemplos:
-
-* `xcp copy -newid _new ID_ *-minmem* src_server:/src_export dst_server:/dst_export`
-* `xcp resume [options] -id *-minmem* _copy ID_`
-* `xcp verify *-minmem* src_server:/src_export dst_server:/dst_export`
-
-
-*Ejemplos de rutas HDFS*:
-
-* `xcp copy *-minmem* hdfs:///user/demo1/data \file:///user/demo1/dest`
-* `xcp verify *-minmem* hdfs:///user/demo1/data \file:///user/demo1/dest`
-* `xcp copy -minmem hdfs:///user/demo1/data s3://bucket1`
-
-
-*Ejemplos de ruta POSIX*:
-
-* `xcp copy *-minmem* -newid _new ID_ \file:///mnt/source \file:///mnt/dest`
-* `xcp verify *-minmem* \file:///mnt/source \file:///mnt/dest`
-
+La ejecución de varios trabajos XCP en el mismo host no es compatible con el `sync` comando.

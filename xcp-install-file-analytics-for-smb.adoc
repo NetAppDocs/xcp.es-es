@@ -16,10 +16,10 @@ summary: Instalar o actualizar File Analytics para SMB
 [role="lead"]
 Instalar o actualizar File Analytics para SMB.
 
+.Acerca de esta tarea
 Para ver los requisitos del sistema para SMB, consulte link:xcp-install-xcp-smb.html["Instale XCP SMB"].
 
-*Antes de empezar*
-
+.Antes de empezar
 * Debe configurar XCP File Analytics para NFS en una máquina Linux para utilizar el servicio XCP SMB.
 * Asegúrese de que el servicio XCP se esté ejecutando en su equipo Linux antes de empezar a configurar XCP File Analytics en un equipo Windows.
 
@@ -31,20 +31,28 @@ Para ver los requisitos del sistema para SMB, consulte link:xcp-install-xcp-smb.
 Para realizar una instalación nueva de File Analytics para SMB, lleve a cabo los siguientes pasos.
 
 .Pasos
-. Copie el `xcp.exe` Archivo en su Windows `C:` unidad, este binario está disponible en el interior `/xcp/windows` después de destar el tgz.
+. Copie el `xcp.exe` Archivo en su Windows `C:` unidad, este binario está disponible en el interior `/xcp/windows` después de desmontar el `tgz` archivo.
 . Descargue el archivo de licencia XCP desde link:https://xcp.netapp.com/["Sitio XCP"^].
 . Cree la carpeta `C:\\NetApp\XCP` Y copie la licencia XCP en esta ubicación.
 . Active la licencia XCP mediante el siguiente comando en el símbolo del sistema:  `xcp.exe activate`
-. Copie el `server.key` y.. `server.crt` archivos de `/opt/NetApp/xFiles/xcp/` (En el cuadro Linux en el que ya está configurado XCP File Analytics) `C:\NetApp\XCP`Opcional: Si tiene un certificado de CA, coloque el certificado en esta ubicación con el mismo nombre y extensiones.
 . En el símbolo del sistema de la CLI de Windows, ejecute `xcp configure`.
 . Cuando se le solicite, proporcione la dirección IP de la máquina Linux en la que está configurado el servidor de análisis de archivos XCP.
-. Cuando se le solicite, proporcione la contraseña de la base de datos que se introdujo durante la configuración de XCP Linux File Analytics.
-. Vaya a la máquina Linux y ejecute `./configure.sh`.
-. Seleccione `option 4 (Update XCP windows agent IP)` En el menú principal y proporcione la dirección IP para el equipo Windows.
-. Vaya a su equipo Windows y ejecute `xcp listen`, Ahora se ha configurado XCP File Analytics para SMB. Mantenga la ventana en estado abierto para ejecutar el servicio de forma continua.
-. Inicie File Analytics en el navegador de Google Chrome y actualice la página: `\https://<ip address of linux>/xcp`
-. Seleccione `OK` cuando aparezca el cuadro de diálogo. Se abrirá una nueva pestaña. Active ventanas emergentes en el navegador si está bloqueado. Acepte la política de privacidad de la URL y aparecerá el siguiente mensaje: `SMB agent is ready to use. Please refresh the analytics page`
-. Vuelva a la ficha original en la que se aloja la GUI de análisis de archivos XCP y actualice la página. Esto mostrará el agente SMB bajo la tarjeta Agents.
+. Copie el `server.key` y.. `server.crt` archivos de `/opt/NetApp/xFiles/xcp/` (En el cuadro Linux en el que ya está configurado XCP File Analytics) `C:\NetApp\XCP`.
++
+Opcionalmente, si posee un certificado de CA, coloque el certificado en `C:\NetApp\XCP` con el mismo nombre y extensiones.
+
+. Vaya a su equipo Windows y ejecute `xcp listen`, Ahora se ha configurado XCP File Analytics para SMB. Mantenga la ventana abierta para ejecutar continuamente el servicio.
+. Iniciar análisis de archivos en un explorador compatible: `\https://<ip address of linux>/xcp`
++
+Consulte link:xcp-install-xcp-smb.html["Instale XCP SMB"] para obtener información sobre los navegadores compatibles.
+
+. Seleccione `OK` cuando aparezca el cuadro de diálogo.
++
+
+NOTE: Se abrirá una nueva pestaña. Active las ventanas emergentes en el navegador si están bloqueadas.
+
+. Acepta la política de privacidad de la URL. Aparece el siguiente mensaje: `SMB agent is ready to use. Please refresh the analytics page`
+. Para mostrar el agente SMB en la tarjeta Agentes, vuelva a la pestaña original que aloja la GUI de XCP File Analytics y actualice la página.
 
 
 
@@ -53,13 +61,19 @@ Para realizar una instalación nueva de File Analytics para SMB, lleve a cabo lo
 
 Para actualizar el Análisis de archivos existente para SMB, lleve a cabo los siguientes pasos.
 
-. Antes de ejecutar File Analytics, asegúrese de que el servidor Linux en el que se ejecuta File Analytics también está actualizado y que el servicio se está ejecutando.
+. Antes de ejecutar File Analytics, compruebe que el servidor Linux en el que se está ejecutando File Analytics también se ha actualizado y que el servicio se está ejecutando.
 . En Windows, detenga el servicio XCP existente introduciendo `CTRL-C` en la línea de comandos.
-. Sustituya `xcp.exe` con el binario más reciente.
-. Vaya a la máquina Linux y ejecute `./configure.sh`.
-. Seleccione `option 4 (Update XCP windows agent IP)` En el menú principal y proporcione la dirección IP para el equipo Windows.
-. Vaya a su equipo Windows y ejecute `xcp listen`, Ahora se ha configurado XCP File Analytics para SMB. Mantenga la ventana en estado abierto para ejecutar el servicio de forma continua.
-. Inicie File Analytics en el navegador de Google Chrome y actualice la página: `\https://<ip address of linux>/xcp`
-. Seleccione `OK` cuando aparezca el cuadro de diálogo. Se abrirá una nueva pestaña. Active ventanas emergentes en el navegador si está bloqueado. Acepte la política de privacidad de la URL y aparecerá el siguiente mensaje: `SMB agent is ready to use. Please refresh the analytics page`
-. Vuelva a la ficha original en la que se aloja la GUI de análisis de archivos XCP y actualice la página. Esto mostrará el agente SMB bajo la tarjeta Agents.
+. Sustituya `xcp.exe` con el último binario.
+. Vaya a su equipo Windows y ejecute `xcp listen` Para configurar XCP File Analytics para SMB. Mantenga la ventana abierta para ejecutar continuamente el servicio.
+. Iniciar análisis de archivos en un explorador compatible: `\https://<ip address of linux>/xcp`
++
+Consulte link:xcp-install-xcp-smb.html["Instale XCP SMB"] para obtener información sobre los navegadores compatibles.
+
+. Seleccione *OK* cuando aparezca el cuadro de diálogo.
++
+
+NOTE: Se abrirá una nueva pestaña. Active las ventanas emergentes en el navegador si están bloqueadas.
+
+. Acepta la política de privacidad de la URL. Aparece el siguiente mensaje: `SMB agent is ready to use. Please refresh the analytics page`
+. Para mostrar el agente SMB en la tarjeta Agentes, vuelva a la pestaña original que aloja la GUI de XCP File Analytics y actualice la página.
 

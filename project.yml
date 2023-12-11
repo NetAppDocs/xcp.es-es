@@ -89,6 +89,9 @@ sidebar:
       url: "/xcp-migrate-data.html"
     - title: Migre datos de SMB
       url: "/xcp-migrate-smb-data.html"
+      entries:
+      - title: Migración de flujos de datos alternativos NTFS para SMB
+        url: "/xcp-smb-ads.html"
     - title: Migrar datos de HDFS
       url: "/xcp-migrate-hdfs-data.html"
     - title: Ejecute varios trabajos XCP en el mismo host

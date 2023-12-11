@@ -101,7 +101,18 @@ El gráfico espacio ocupado por los usuarios muestra el espacio utilizado por lo
 
 image:xcp_image13.png["Gráfico de archivos accedidos, modificados o creados"]
 
-El gráfico Archivos accedidos/modificados/creados muestra el número de archivos extra modificados. El eje X representa el período de tiempo en el que se realizaron cambios y el eje y representa el número de archivos modificados.
+El gráfico Archivos accedidos/modificados/creados muestra el recuento de archivos modificados a lo largo del tiempo. El eje X representa el período de tiempo en el que se realizaron los cambios y el eje Y representa el número de archivos modificados.
+
+
+NOTE: Para obtener el gráfico de tiempo de acceso (atime) en los análisis de SMB, marque la casilla de verificación conservar atime antes de ejecutar un análisis.
+
+
+
+=== Gráfico de tamaño de archivo accedido/modificado/creado
+
+image:xcp-filesize-amc.png[""]
+
+El gráfico Tamaño de archivo al que se ha accedido/modificado/creado muestra el tamaño de los archivos modificados con el tiempo. El eje X representa el período de tiempo en el que se realizaron los cambios y el eje Y representa el tamaño de los archivos modificados.
 
 
 NOTE: Para obtener el gráfico de tiempo de acceso (atime) en los análisis de SMB, marque la casilla de verificación conservar atime antes de ejecutar un análisis.
@@ -113,6 +124,18 @@ NOTE: Para obtener el gráfico de tiempo de acceso (atime) en los análisis de S
 image:xcp_image14.png["Distribución de archivos por gráfico de extensión"]
 
 El gráfico distribución de archivos por extensión representa el recuento de las diferentes extensiones de archivo de un recurso compartido de archivos. El tamaño de las divisiones que representan las extensiones se basa en el número de archivos con cada extensión.
+
+Además, para los recursos compartidos SMB, puede obtener el número de archivos de flujos de datos alternativos (ADS) para cada extensión de archivo marcando la casilla de ANUNCIOS antes de ejecutar un análisis.
+
+image:xcp-file-distribution-ads.png[""]
+
+
+
+=== Distribución de tamaño de archivo por gráfico de extensión
+
+image:xcp-filesize-dist-ex.png[""]
+
+El gráfico Distribución de tamaño de archivo por extensión representa el tamaño acumulativo de las diferentes extensiones de archivo en un recurso compartido de archivos. El tamaño de las divisiones que representan las extensiones se basa en el tamaño de los archivos con cada extensión.
 
 
 
@@ -128,3 +151,7 @@ El gráfico distribución por tipo representa el recuento de los siguientes tipo
 * DIR: Archivos con directorios
 * Junction: Disponible únicamente en SMB
 
+
+Además, para los recursos compartidos SMB, puede obtener el número de archivos de flujos de datos alternativos (ADS) para diferentes tipos marcando la casilla de ANUNCIOS antes de ejecutar un análisis.
+
+image:xcp-file-distribution-type.png[""]
