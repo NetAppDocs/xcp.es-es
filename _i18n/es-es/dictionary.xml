@@ -204,8 +204,6 @@
   <block id="c964f883e08bd7e73eedf7523e656fce" category="paragraph">Si<block ref="69bd52086ce7bdfd686b31ed2e5a4c4d" prefix=" " category="inline-code"></block> no está disponible al ejecutar<block ref="974d7928831087bfbec5968aec9bea85" prefix=" " category="inline-code"></block> Por primera vez, el sistema crea el directorio de configuración del host XCP en<block ref="69bd52086ce7bdfd686b31ed2e5a4c4d" prefix=" " category="inline-code"></block>.</block>
   <block id="818c4be34b657c2134ee2c70ef2312c5" category="list-text">Copie la licencia en<block ref="3df1fc5d44c3245d21ca23277f304d2f" prefix=" " category="inline-code"></block>:</block>
   <block id="03ab84de1a594e05c7eb116ea062b26c" category="list-text">Compruebe que el archivo de licencia se ha copiado en<block ref="3df1fc5d44c3245d21ca23277f304d2f" prefix=" " category="inline-code"></block>:</block>
-  <block id="11047916a280f54b6bb638b4fa43d625" category="summary">Resolución de problemas de errores XCP SMB</block>
-  <block id="5bf172f77cc9d71e44a586eb796e8205" category="doc">Resolución de problemas de errores XCP SMB</block>
   <block id="642facf67e0ad311eee88b3ab8381590" category="cell">Problema</block>
   <block id="430f0b9cbaeb94092aee4baf6da23965" category="cell">Obtenga el archivo de licencia XCP apropiado. Copie la licencia XCP en<block ref="33512415e7c038be43ab3632124d3ebf" prefix=" " category="inline-code"></block> En el host XCP. Ejecute el<block ref="974d7928831087bfbec5968aec9bea85" prefix=" " category="inline-code"></block> para activar la licencia</block>
   <block id="d41bf97a60e7be57b7f2c07b092ad5b0" category="cell"><block ref="ad3b549c4b03e0598dee96d17d3ccc66" prefix="" category="inline-code"></block>: XCP no activado, ejecute primero "Activar"</block>
@@ -951,4 +949,6 @@ Referencia: <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-
   <block id="b99588d251bf1019e0e822689ebaf7d2" category="list-text"><block ref="b9a9b1656ba3adc03b7fa7487e42a8f6" prefix="" category="inline-code"></block></block>
   <block id="462f82c31411e99799f7e9026350b607" category="sidebar">XCP de NetApp es un software basado en clientes que permite migraciones de datos escalables y de alto rendimiento para migraciones de datos escalables y de NetApp a NetApp y análisis de archivos. Aquí encontrará documentación para el software XCP 1.9.3, que incluye cómo instalar, configurar y usar XCP. La documentación para versiones anteriores de XCP está disponible en el sitio de soporte de NetApp.</block>
   <block id="01fe75bfb5351e8cb287658bc7ee5325" category="sidebar">XCP 1.9.2 de NetApp</block>
+  <block id="06c7c6fe1390b1e7519864e5fd3adc1b" category="summary">Solución de problemas de errores SMB de XCP</block>
+  <block id="103bae74aac9cad62c4f7826cc30141d" category="doc">Solucionar errores de SMB de XCP</block>
 </blocks>
