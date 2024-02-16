@@ -65,7 +65,7 @@ Un usuario raíz en un equipo Linux tiene los permisos para montar los volúmene
 
 == Usuario no raíz
 
-Un usuario que no es raíz tiene los siguientes permisos en un volumen montado:
+Se requiere que un usuario que no sea raíz tenga los siguientes permisos en un volumen montado:
 
 * Acceso con permiso de lectura al volumen de origen
 * Acceso de permisos de lectura/escritura al volumen de destino montado
