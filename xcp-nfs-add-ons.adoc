@@ -28,7 +28,7 @@ Cuando solo habilita NFSv4 en los volúmenes de origen, destino y catálogo en e
 
 == Conectores POSIX
 
-XCP 1.8 admite el uso de conectores POSIX para proporcionar rutas de origen, destino y catálogo para la migración de datos. El conector POSIX (File://) ofrece a XCP la posibilidad de acceder a cualquier sistema de archivos montado en Linux, como NFSv4, XFS y Veritas. Para los usuarios que no son raíz, el administrador del sistema puede montar el sistema de archivos para dar a cualquier usuario que no sea raíz la capacidad de acceder al sistema de archivos mediante un conector POSIX con el prefijo file://.
+XCP admite el uso de conectores POSIX para proporcionar rutas de origen, destino y catálogo para la migración de datos. El conector POSIX (file://) permite a XCP acceder a cualquier sistema de archivos montado en Linux, como NFSv4, XFS y Veritas. Para usuarios que no sean raíz, el administrador del sistema puede montar el sistema de archivos para proporcionar a cualquier usuario que no sea raíz la capacidad de acceder al sistema de archivos mediante un conector POSIX con el prefijo file://.
 
 Puede beneficiarse del uso de conectores POSIX si no tiene permisos suficientes para montar el archivo o si la compatibilidad disponible en los centros de datos se limita a NFSv4. En estos casos, cualquier usuario root puede montar el origen y el destino y, a continuación, acceder a la ruta mediante un conector POSIX. Si utiliza conectores POSIX, sólo puede ejecutar el `xcp copy` funcionamiento.
 
