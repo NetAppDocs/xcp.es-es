@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-activate.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: Referencia de comandos NFS XCP 
+---
+= activar
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+El NFS `activate` Comando activa la licencia XCP.
+
+
+NOTE: Antes de ejecutar este comando, verifique que el archivo de licencia se haya descargado y copiado en el `opt/NetApp/xFiles/xcp/` En el host del cliente XCP Linux.
+
+.Sintaxis
+[source, cli]
+----
+xcp activate
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp activate
+
+XCP activated
+----
+====

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: xcp-smb-ads.html 
 keywords: netapp, xcp, smb, ads, alternate, data, streams, ntfs 
-summary: Migración de flujos de datos alternativos NTFS para SMB 
+summary: Los datos alternativos de NTFS atascan la migración para SMB 
 ---
 = Migración de flujos de datos alternativos NTFS para SMB
 :hardbreaks:
@@ -14,13 +14,13 @@ summary: Migración de flujos de datos alternativos NTFS para SMB
 
 
 [role="lead"]
-A partir de XCP 1,9.3, XCP SMB admite la migración de NTFS Alternate Data Streams (ADS) mediante el `-ads` Opción con los comandos SMB de XCP.
+A partir de XCP 1,9.3, XCP SMB admite la migración de flujos de datos alternativos NTFS mediante el `-ads` Opción con los comandos SMB de XCP.
 
 
 
 == Casos de uso admitidos
 
-Puede utilizar XCP SMB `copy` y.. `sync` Comandos para migrar datos que incluyen ADS y XCP SMB `scan` Comando para escanear el recurso compartido de SMB en busca de ANUNCIOS.
+Puede utilizar XCP SMB `copy` y.. `sync` Comandos para migrar datos que incluyen flujos de datos alternativos y el XCP SMB `scan` Comando para analizar el recurso compartido de SMB en busca de flujos de datos alternativos.
 
 
 

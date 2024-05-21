@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-logging-logconfig.html 
+keywords: netapp, xcp, reference, event, logging 
+summary: Registro XCP 
+---
+= Establezca la opción logConfig
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Obtenga más información sobre la opción logConfig en la `xcpLogConfig.json` Archivo de configuración JSON para XCP NFS y SMB.
+
+El siguiente ejemplo muestra el archivo de configuración JSON establecido con la opción “logConfig”:
+
+*ejemplo*
+
+[listing]
+----
+{
+"level":"INFO",
+"maxBytes":"52428800",
+"name":"xcp.log"
+}
+----
+* Con esta configuración, puede filtrar los mensajes según su gravedad seleccionando un valor de nivel válido de `CRITICAL`, `ERROR`, `WARNING`, `INFO`, y. `Debug`.
+* La `maxBytes` la configuración permite cambiar el tamaño del archivo de los archivos log giratorios. El valor predeterminado es 50MB. Al definir el valor en 0, se detiene la rotación y se crea un solo archivo para todos los registros.
+* La `name` la opción configura el nombre del archivo log.
+* Si falta algún par clave valor, el sistema utiliza el valor predeterminado. Si comete un error al especificar el nombre de una clave existente, se trata como una clave nueva y la nueva clave no afecta al funcionamiento de los sistemas ni a la funcionalidad del sistema.
+

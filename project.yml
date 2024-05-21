@@ -106,5 +106,83 @@ sidebar:
       url: "/xcp-troubleshoot-xcp-smb-errors.html"
     - title: Solucionar errores de análisis de archivos XCP
       url: "/xcp-troubleshoot-xcp-file-analytics-errors.html"
+  - title: Referencia XCP
+    entries:
+    - title: Descripción general de la referencia del comando XCP
+      url: "/xcp-reference-overview.html"
+    - title: Referencia de comandos de NFS
+      entries:
+      - title: ayuda
+        url: "/xcp-nfs-reference-help.html"
+      - title: mostrar
+        url: "/xcp-nfs-reference-show.html"
+      - title: licencia
+        url: "/xcp-nfs-reference-license.html"
+      - title: activar
+        url: "/xcp-nfs-reference-activate.html"
+      - title: escanee
+        url: "/xcp-nfs-reference-scan.html"
+      - title: copiar
+        url: "/xcp-nfs-reference-copy.html"
+      - title: sincr
+        url: "/xcp-nfs-reference-sync.html"
+      - title: reanudar
+        url: "/xcp-nfs-reference-resume.html"
+      - title: verificación
+        url: "/xcp-nfs-reference-verify.html"
+      - title: chmod
+        url: "/xcp-nfs-reference-chmod.html"
+      - title: chown
+        url: "/xcp-nfs-reference-chown.html"
+      - title: volcado de registros
+        url: "/xcp-nfs-reference-logdump.html"
+      - title: eliminar
+        url: "/xcp-nfs-reference-delete.html"
+      - title: estimación
+        url: "/xcp-nfs-reference-estimate.html"
+      - title: indexdelete
+        url: "/xcp-nfs-reference-indexdelete.html"
+      - title: isync
+        url: "/xcp-nfs-reference-isync.html"
+    - title: Referencia de comandos del SMB
+      entries:
+      - title: ayuda
+        url: "/xcp-smb-reference-help.html"
+      - title: mostrar
+        url: "/xcp-smb-reference-show.html"
+      - title: licencia
+        url: "/xcp-smb-reference-license.html"
+      - title: activar
+        url: "/xcp-smb-reference-activate.html"
+      - title: escanee
+        url: "/xcp-smb-reference-scan.html"
+      - title: copiar
+        url: "/xcp-smb-reference-copy.html"
+      - title: sincr
+        url: "/xcp-smb-reference-sync.html"
+      - title: verificación
+        url: "/xcp-smb-reference-verify.html"
+      - title: configurar
+        url: "/xcp-smb-reference-configure.html"
+      - title: escuche
+        url: "/xcp-smb-reference-listen.html"
+    - title: Casos de uso de XCP
+      entries:
+      - title: Casos de uso de XCP
+        url: "/xcp-reference-use-cases.html"
+    - title: Registro XCP
+      entries:
+      - title: Establezca la opción logConfig
+        url: "/xcp-reference-logging-logconfig.html"
+      - title: Defina la opción eventlog
+        url: "/xcp-reference-logging-eventlog.html"
+      - title: Habilite el cliente syslog
+        url: "/xcp-reference-logging-syslog.html"
+    - title: Registros de eventos de XCP
+      entries:
+      - title: Registros de eventos de NFS
+        url: "/xcp-reference-event-logs-nfs.html"
+      - title: Registros de eventos de SMB
+        url: "/xcp-reference-event-logs-smb.html"
   - title: Avisos legales
     url: "/legal-notices.html"

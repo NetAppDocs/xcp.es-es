@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: xcp-smb-reference-activate.html 
+keywords: netapp, xcp, reference, smb, command, commands 
+summary: Referencia de comandos de activación de SMB de XCP 
+---
+= activar
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+El SMB `activate` Comando activa la licencia XCP. Antes de ejecutar este comando, compruebe que se descargue y copie el archivo de licencia en el directorio C:\NetApp\XCP en el host XCP o la máquina cliente. La licencia se puede activar en cualquier número de hosts.
+
+.Sintaxis
+[source, cli]
+----
+xcp activate
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+C:\Users\Administrator\Desktop\xcp>xcp activate
+XCP activated
+----
+====

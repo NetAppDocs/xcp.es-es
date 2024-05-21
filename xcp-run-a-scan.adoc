@@ -125,7 +125,7 @@ image:xcp_image14.png["Distribución de archivos por gráfico de extensión"]
 
 El gráfico distribución de archivos por extensión representa el recuento de las diferentes extensiones de archivo de un recurso compartido de archivos. El tamaño de las divisiones que representan las extensiones se basa en el número de archivos con cada extensión.
 
-Además, para los recursos compartidos SMB, puede obtener el número de archivos de flujos de datos alternativos (ADS) para cada extensión de archivo marcando la casilla de ANUNCIOS antes de ejecutar un análisis.
+Además, para los recursos compartidos SMB, puede obtener el número de archivos de flujos de datos alternativos para cada extensión de archivo activando la casilla para los flujos de datos alternativos antes de ejecutar un análisis.
 
 image:xcp-file-distribution-ads.png[""]
 
@@ -152,6 +152,6 @@ El gráfico distribución por tipo representa el recuento de los siguientes tipo
 * Junction: Disponible únicamente en SMB
 
 
-Además, para los recursos compartidos SMB, puede obtener el número de archivos de flujos de datos alternativos (ADS) para diferentes tipos marcando la casilla de ANUNCIOS antes de ejecutar un análisis.
+Además, para recursos compartidos SMB, puede obtener el número de archivos de flujos de datos alternativos para diferentes tipos activando la casilla para flujos de datos alternativos antes de ejecutar una exploración.
 
 image:xcp-file-distribution-type.png[""]

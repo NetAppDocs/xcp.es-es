@@ -1,0 +1,424 @@
+---
+sidebar: sidebar 
+permalink: xcp-smb-reference-copy.html 
+keywords: netapp, xcp, reference, smb, command, commands 
+summary: Referencia de comandos de copia de SMB de XCP 
+---
+= copiar
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La `copy` El comando analiza y copia toda la estructura del directorio de origen en un recurso compartido SMB de destino. La `copy` el comando requiere rutas de origen y destino como variables. Los archivos escaneados y copiados, el rendimiento/velocidad y los detalles de tiempo transcurrido se imprimen en la consola una vez cada cinco segundos.
+
+[NOTE]
+====
+* El archivo de registro de tiempo de ejecución se almacena en «C:\NetApp\XCP».
+* Este `copy` El comando copia datos sin una lista de control de acceso (ACL).
+
+
+====
+.Sintaxis
+[source, cli]
+----
+xcp copy \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp copy \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp copy \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+317 scanned, 0 matched, 316 copied, 0 errors
+Total Time : 2s
+STATUS : PASSED
+----
+====
+En la siguiente tabla, se muestra el `copy` parámetros y su descripción.
+
+[cols="2*"]
+|===
+| Parámetro | Descripción 
+
+
+| <<smb_copy_help,copiar -h, --help>> | Muestra información detallada sobre `copy` comando. 
+
+
+| <<copia -v>> | Aumente la verbosidad de la depuración. 
+
+
+| <<smb_copy_parallel,copiar -paralelo  >> | Especifica el Núm. De procesos simultáneos (por defecto: <cpu-count>). 
+
+
+| <<smb_copy_match,copiar -coincidir  >> | Sólo procesa archivos y directorios que coincidan con el filtro (consulte `xcp help - match` para obtener más detalles). 
+
+
+| <<smb_copy_exclude,copiar -excluir  >> | Sólo excluye archivos y directorios en el filtro 
+
+
+| <<copiar -preserve-atime>> | Restaura la fecha de último acceso en el origen. 
+
+
+| <<smb_copy_acl,copiar -acl>> | Copia información de seguridad. 
+
+
+| <<smb_copy_acl,copiar -fallback-user  >> | Especifica el usuario de Active Directory o el usuario local (no de dominio) en la máquina de destino que recibe los permisos de los usuarios de la máquina de origen local (no de dominio). Por ejemplo, dominio\administrador. 
+
+
+| <<smb_copy_acl,copiar -fallback-group  >> | Especifica el grupo de Active Directory o el grupo local (no de dominio) en la máquina de destino que recibe los permisos de grupos de máquinas de origen locales (no de dominio). Por ejemplo, dominio\administradores. 
+
+
+| <<smb_copy_root,copiar -raíz>> | Copia las ACL de un directorio raíz. 
+
+
+| <<smb_copy_aclverify,copiar -aclverify {yes,no}>> | Proporciona una opción para omitir o incluir la verificación ACL durante la operación copy -acl. 
+
+
+| <<copiar -nopropiedad>> | No copia la propiedad. 
+
+
+| <<smb_copy_bs,copiar -bs  >> | Tamaño de bloque de lectura/escritura (predeterminado:1M) 
+
+
+| <<copiar -anuncios>> | Copia flujos de datos alternativos NTFS desde el recurso compartido SMB de origen al recurso compartido SMB de destino. 
+|===
+
+
+== copiar -h, --help
+
+Utilice la `-h` y.. `–-help` parámetros con el `copy` comando para mostrar información detallada acerca del `copy` comando
+
+.Sintaxis
+[source, cli]
+----
+xcp copy –help
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+C:\netapp\xcp>xcp copy –help
+
+usage: xcp copy [-h] [-v] [-parallel <n>] [-match <filter>] [-exclude <filter>] [-preserve- atime] [-acl] [-fallback-user FALLBACK_USER]
+[-fallback-group FALLBACK_GROUP] [-loglevel <name>] [-root] [-noownership] [- aclverify {yes,no}] [-bs <n>] [-ads]
+         source target
+
+positional arguments:
+   source
+   target
+
+optional arguments:
+-h, --help            show this help message and exit
+-v                    increase debug verbosity
+-parallel <n>         number of concurrent processes (default: <cpu-count>)
+-match <filter>       only process files and directories that match the filter (see `xcp help -match` for details)
+-exclude <filter>     Exclude files and directories that match the filter (see `xcp help - exclude` for details)
+-preserve-atime       restore last accessed date on source
+-acl                  copy security information
+-fallback-user FALLBACK_USER
+                      the name of the user on the target machine to receive the permissions of local (non-domain) source machine users (eg. domain\administrator)
+-fallback-group FALLBACK_GROUP
+                      the name of the group on the target machine to receive the permissions of local (non-domain) source machine groups (eg. domain\administrators)
+-loglevel <name>      option to set log level filter (default:INFO)
+-root                 copy acl for root directory
+-noownership          do not copy ownership
+-aclverify {yes,no}   choose whether you need to skip acl verification
+-bs <n>               read/write block size for copy (default: 1M)
+-ads                  copy NTFS alternate data streams.
+----
+====
+
+
+== copia -v
+
+Utilice la `-v` con el `copy` comando para proporcionar información detallada de depuración.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -v \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp copy -v \\<IP address of SMB destination server>\src \\<IP address of SMB destination server>\dest\d1
+
+failed to set attributes for "d1": (5, 'CreateDirectory', 'Access is denied.')
+failed to copy "f1.txt": (5, 'CreateFile', 'Access is denied.')
+failed to set attributes for "": (5, 'SetFileAttributesW', 'Access is denied.') error setting timestamps on "": errno (code: 5) Access is denied.
+H:\p 4\xcp_latest\xcp_cifs\xcp\ main .py copy -v \\<IP address of SMB destination server>\src \\<IP address of SMB destination server>\dest\d1
+3 scanned, 0 matched, 0 skipped, 1 copied, 0 (0/s), 3 errors
+Total Time : 3s
+STATUS : FAILED
+----
+====
+
+
+== copiar <n> paralelo
+
+Utilice la `-parallel <n>` con el `copy` Comando para definir un Núm. Mayor o menor de procesos simultáneos XCP. El valor predeterminado para `-parallel` Es igual al número de CPU.
+
+
+NOTE: El valor máximo de n es 61.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -parallel <n> \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp copy -parallel 7	\\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp copy -parallel 7 \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+317 scanned, 0 matched, 316 copied, 0errors
+Total Time : 2s
+STATUS : PASSED
+----
+====
+
+
+== copiar -coincidir <filter>
+
+Utilice la `-match <filter>` con el `copy` comando para copiar sólo los datos que coinciden con el argumento transferido.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -match <filter> \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp copy -match "'gx' in name" \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp copy -match 'gx' in name \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+317 scanned, 5 matched, 4 copied, 0 errors
+Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+== copiar -excluir <filter>
+
+Utilice la `-exclude <filter>` con el `copy` comando para copiar sólo los datos excluidos.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -exclude <filter> \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+En el siguiente ejemplo, los archivos y directorios que tienen la cadena “resync” en su nombre se han excluido para su copia.
+
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp copy -exclude "'resync' in name" \\<IP address or hostname of SMB server>\source_share \\<IP address or hostname of SMB server>\dest_share
+
+
+xcp copy -exclude 'resync' in name \\<IP address or hostname of SMB server>\source_share \\\\<IP address or hostname of SMB server>\dest_share
+18 scanned, 2 excluded, 0 skipped, 15 copied, 122KiB (50.5KiB/s), 0 errors
+Total Time : 2s
+STATUS : PASSED
+----
+====
+
+
+== copiar -preserve-atime
+
+Utilice la `-preserve-atime` con el `copy` Comando para restablecer el valor original de «atime» antes de que XCP lea el archivo.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -preserve-atime \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp copy -preserve-atime \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp copy -preserve-atime \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+317 scanned, 0 matched, 316 copied, 0 errors
+Total Time : 2s
+STATUS : PASSED
+----
+====
+
+
+== copy -acl -fallback-user <fallback_user> -fallback-group <fallback_group>
+
+Utilice la `-acl` con el `copy` Comando para activar la transferencia de los descriptores de seguridad (ACL).
+
+Utilice la `-acl` con el `-fallback-user` y.. `-fallback-group` Opciones para especificar un usuario y un grupo en el equipo de destino o desde Active Directory para recibir los permisos de usuarios o grupos de máquinas de origen locales (no de dominio). Esto no hace referencia a usuarios no coincidentes de un Active Directory.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -acl -fallback-user <fallback_user> -fallback-group <fallback_group> \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+
+
+== copiar -aclverify {yes,no}
+
+Utilice la `-aclverify {yes,no}` con el `copy` Comando para proporcionar una opción para omitir o incluir la verificación de ACL durante una operación de copia de ACL.
+
+Debe utilizar el `-aclverify {yes,no}` con el `copy -acl` comando. Por defecto, la operación de copia de ACL verifica las ACL. Si establece la `-aclverify` opción a. `no`, Puede omitir la verificación de ACL y el `fallback-user` y.. `fallback-group` las opciones no son necesarias. Si ha configurado `-aclverify` para `yes`, requiere el `fallback-user` y.. `fallback-group` opciones, como se muestra en el siguiente ejemplo.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -acl -aclverify yes -fallback-user <fallback_user> -fallback-group <fallback_group> \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+C:\NetApp\xcp>xcp copy -acl -aclverify yes -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group"
+\\<source_IP_address>\source_share \\<destination_IP_address>\dest_share
+
+12 scanned, 0 matched, 0 skipped, 0 copied, 0 (0/s), 0 errors, 5s, 0 acls copied
+12 scanned, 0 matched, 0 skipped, 0 copied, 0 (0/s), 0 errors, 10s, 0 acls copied
+12 scanned, 0 matched, 0 skipped, 0 copied, 0 (0/s), 0 errors, 15s, 0 acls copied xcp copy -acl -aclverify yes -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" \\<source_IP_address>\source_share \\<destination_IP_address>\dest_share
+12 scanned, 0 matched, 0 skipped, 11 copied, 10KiB (634/s), 0 errors, 11 acls copied
+Total Time : 16s
+STATUS : PASSED
+
+C:\NetApp\xcp>xcp copy -acl -aclverify no \\<source_IP_address>\source_share \\<destination_IP_address>\dest_share
+
+xcp copy -acl -aclverify no \\<source_IP_address>\source_share \\<destination_IP_address>\dest_share
+12 scanned, 0 matched, 0 skipped, 11 copied, 10KiB (5.61KiB/s), 0 errors, 11 acls copied
+Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+== copiar -raíz
+
+Utilice la `-root` con el `copy` Comando para copiar las ACL del directorio raíz.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -acl -root -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+C:\NetApp\XCP>xcp copy -acl -root -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp copy -acl -root -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+6 scanned, 0 matched, 0 skipped, 5 copied, 200 (108/s), 0 errors, 6 acls copied
+Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+== copiar -nopropiedad
+
+Utilice la `-noownership` con el `copy` comando para especificar no copiar la propiedad del origen en el destino. Debe usar `-noownership` con la `-acl` opción y requiere `fallback-user` y.. `fallback-group` como parámetros obligatorios.
+
+.Sintaxis
+[source, cli]
+----
+xcp.exe copy -acl -noownership -fallback-user <fallback_user> -fallback-group <fallback_group> \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+C:\Netapp\xcp>xcp.exe copy -acl -noownership -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" \\<source_IP_address>\source_share \\<destination_IP_address>\dest_share
+
+568 scanned, 0 matched, 0 skipped, 0 copied, 0 (0/s), 0 errors, 5s, 0 acls copied
+568 scanned, 0 matched, 0 skipped, 0 copied, 0 (0/s), 0 errors, 10s, 0 acls copied
+568 scanned, 0 matched, 0 skipped, 135 copied, 4.26MiB (872KiB/s), 0 errors, 15s, 137 acls copied xcp.exe copy -acl -noownership -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" \\<source_IP_address>\source_share \\<destination_IP_address>\dest_share
+568 scanned, 0 matched, 0 skipped, 567 copied, 17.7MiB (1.01MiB/s), 0 errors, 567 acls copied
+Total Time : 17s
+STATUS : PASSED
+----
+====
+
+
+== <n> de copia -bs
+
+Utilice la `-bs <n>` con el `copy` comando para proporcionar un tamaño de bloque de lectura/escritura. El valor predeterminado es 1M.
+
+.Sintaxis
+[source, cli]
+----
+xcp.exe copy -bs <n> \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+c:\Netapp\xcp>xcp.exe copy -bs 32k \\<source_IP_address>\source_share \\<destination_IP_address>\dest_share
+
+xcp.exe copy -bs 32k \\<source_IP_address>\source_share \\<destination_IP_address>\dest_share
+568 scanned, 0 matched, 0 skipped, 567 copied, 17.7MiB (6.75MiB/s), 0 errors
+Total Time : 2s
+STATUS : PASSED
+----
+====
+
+
+== copiar -anuncios
+
+Utilice la `-ads` con el `copy` Comando para copiar flujos de datos alternativos NTFS del recurso compartido SMB de origen al recurso compartido SMB de destino.
+
+.Sintaxis
+[source, cli]
+----
+xcp copy -ads \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.Muestra el ejemplo
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp copy -ads \\<source_IP_address>\source_share\src \\<dest_IP_address>\dest_share
+
+6   scanned, 0 matched, 0 skipped, 3 copied, 13 (2.41/s), 0 errors, 5s, 10 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	10s, 11 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	15s, 12 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	20s, 13 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	25s, 13 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	30s, 13 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	35s, 13 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	40s, 13 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	45s, 13 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	2m15s, 13 ads copied
+6	scanned,	0	matched,	0	skipped,	3	copied,	13	(0/s),	0	errors,	3m5s, 13 ads copied
+xcp copy -ads \\<source_IP_address>\source_share\src \\<desination_IP_address>\dest_share
+6 scanned, 0 matched, 0 skipped, 5 copied, 26 (0.137/s), 0 errors, 14 ads copied
+Total Time : 3m9s
+STATUS : PASSED
+----
+====

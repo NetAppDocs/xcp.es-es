@@ -14,10 +14,12 @@ indexpage:
       url: "/xcp-index.html"
     - title: Instale XCP
       url: "/xcp-install-xcp.html"
-    - title: Referencia XCP
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872
   - title: Versiones anteriores
     links:
+    - title: Notas de la versión de NetApp XCP 1.9.3
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886695
+    - title: Referencia del NetApp XCP 1.9.3
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872
     - title: Notas de la versión de NetApp XCP 1.9.2
       url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2885805
     - title: Referencia del NetApp XCP 1.9.2
@@ -25,10 +27,6 @@ indexpage:
     - title: Notas de la versión de NetApp XCP 1.9.1
       url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2884968
     - title: Referencia del NetApp XCP 1.9.1
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2883343
-    - title: Notas de la versión de NetApp XCP 1,9
-      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2883342
-    - title: Referencia del NetApp XCP 1,9
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2883343
   - title: Más recursos
     links:
@@ -40,3 +38,9 @@ indexpage:
       url: https://www.netapp.com/search/#q=xcp&sort=relevancy&f:@language=English
     - title: Comunidad NetApp (foros)
       url: link:https://community.netapp.com
+  - title: Referencia XCP
+    links:
+    - title: Referencia de comandos de NFS
+      url: "/xcp-nfs-reference-help.html"
+    - title: Referencia de comandos del SMB
+      url: "/xcp-smb-reference-help.html"
