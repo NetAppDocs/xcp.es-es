@@ -635,8 +635,6 @@
   <block id="95b2f11d1aece0b4ddfc5cba00384742" category="summary">Instale XCP</block>
   <block id="5157096b4994925e784b5ccc913a425c" category="section-title">Instale y configure el flujo de trabajo</block>
   <block id="dda26d898eec39eecd399e188771288e" category="paragraph">Este documento proporciona un flujo de trabajo sencillo para instalar y configurar XCP en sistemas NFS y SMB.</block>
-  <block id="341d84aa26cb4521474864e04ea2a63b" category="inline-image-macro">Error: Falta la imagen gráfica</block>
-  <block id="e0cc20d4c07649f34c6795a45c8f54ec" category="paragraph"><block ref="e0cc20d4c07649f34c6795a45c8f54ec" category="inline-image-macro-rx" type="image"></block></block>
   <block id="af4c2fb6e7c29314dbe63e8b1d277ff8" category="section-title">Descargar XCP</block>
   <block id="83008f4493bba0b08400133371c2e80c" category="paragraph">Descargue XCP del sitio de soporte de NetApp y obtenga una licencia del sitio de XCP.</block>
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link-macro">Sitio de soporte de NetApp</block>
@@ -2214,4 +2212,8 @@ sistema.</block>
   <block id="7abd8bc01e56757cc6d2d51936b79c34" category="sidebar">Registros de eventos de XCP</block>
   <block id="64b873b5723d0186c94db0f344f92d2b" category="sidebar">Registros de eventos de NFS</block>
   <block id="4749766868b7c96046bdc8c12e4653fb" category="sidebar">Registros de eventos de SMB</block>
+  <block id="10f9a2d4423674460e3651820224566e" category="inline-image-macro">Flujo de trabajo de instalación y configuración de XCP</block>
+  <block id="d00c1e93acb215a134bcc17a6aafed7e" category="paragraph"><block ref="d00c1e93acb215a134bcc17a6aafed7e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e53491994f0709110c81f65b9c6dcbf5" category="cell">Listas de control de acceso (ACL) de terceros a NTFS de NetApp</block>
+  <block id="0ce0e45a25c05fb4a79ccca92ab31b0a" category="cell">XCP SMB no admite la migración de ACL de terceros de sistemas que no sean de NetApp a NetApp.</block>
 </blocks>
