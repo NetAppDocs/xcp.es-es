@@ -110,7 +110,7 @@ NOTE: Para obtener el gráfico de tiempo de acceso (atime) en los análisis de S
 
 === Gráfico de tamaño de archivo accedido/modificado/creado
 
-image:xcp-filesize-amc.png[""]
+image:xcp-filesize-amc.png["Un gráfico que muestra el tamaño de los archivos cambiados con el tiempo"]
 
 El gráfico Tamaño de archivo al que se ha accedido/modificado/creado muestra el tamaño de los archivos modificados con el tiempo. El eje X representa el período de tiempo en el que se realizaron los cambios y el eje Y representa el tamaño de los archivos modificados.
 
@@ -127,13 +127,13 @@ El gráfico distribución de archivos por extensión representa el recuento de l
 
 Además, para los recursos compartidos SMB, puede obtener el número de archivos de flujos de datos alternativos para cada extensión de archivo activando la casilla para los flujos de datos alternativos antes de ejecutar un análisis.
 
-image:xcp-file-distribution-ads.png[""]
+image:xcp-file-distribution-ads.png["Un gráfico que muestra cómo obtener el número de archivos de flujo de datos alternativos para cada extensión de archivo en XCP SMB"]
 
 
 
 === Distribución de tamaño de archivo por gráfico de extensión
 
-image:xcp-filesize-dist-ex.png[""]
+image:xcp-filesize-dist-ex.png["Gráfico que muestra el tamaño acumulativo de las diferentes extensiones de archivo en un recurso compartido de archivos."]
 
 El gráfico Distribución de tamaño de archivo por extensión representa el tamaño acumulativo de las diferentes extensiones de archivo en un recurso compartido de archivos. El tamaño de las divisiones que representan las extensiones se basa en el tamaño de los archivos con cada extensión.
 
@@ -154,4 +154,4 @@ El gráfico distribución por tipo representa el recuento de los siguientes tipo
 
 Además, para recursos compartidos SMB, puede obtener el número de archivos de flujos de datos alternativos para diferentes tipos activando la casilla para flujos de datos alternativos antes de ejecutar una exploración.
 
-image:xcp-file-distribution-type.png[""]
+image:xcp-file-distribution-type.png["Un gráfico que muestra cómo obtener el número de archivos de flujo de datos alternativos para diferentes tipos para XCP SMB"]

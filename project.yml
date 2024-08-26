@@ -14,7 +14,6 @@ sidebar:
   - title: Notas de la versión
     url: "/releasenotes.html"
   - title: Comience a usar XCP
-    type: solutions
     entries:
     - title: Más información sobre XCP
       url: "/xcp-index.html"
@@ -61,8 +60,9 @@ sidebar:
     - title: Configure el conector S3
       url: "/xcp-configure-s3-connector-nfs.html"
   - title: Planificación de la migración de datos
-    url: "/xcp-plan-data-migration.html"
     entries:
+    - title: Descripción general
+      url: "/xcp-plan-data-migration.html"
     - title: Planifique la migración de datos NFS
       url: "/xcp-plan-nfs-data-migration.html"
     - title: Planifique la migración de datos de SMB
@@ -89,6 +89,7 @@ sidebar:
       url: "/xcp-migrate-data.html"
     - title: Migre datos de SMB
       url: "/xcp-migrate-smb-data.html"
+    - title: Migración de flujos de datos alternativos NTFS para SMB
       entries:
       - title: Migración de flujos de datos alternativos NTFS para SMB
         url: "/xcp-smb-ads.html"

@@ -4,7 +4,7 @@ permalink: xcp-configure-the-ini-file-for-xcp-nfs.html
 keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
 summary: Pasos para configurar el archivo INI XCP 
 ---
-= Configure el archivo INI
+= Configure el archivo INI para XCP NFS
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -15,6 +15,9 @@ summary: Pasos para configurar el archivo INI XCP
 
 [role="lead"]
 Pasos para configurar el archivo INI para XCP.
+
+
+NOTE: El archivo INI XCP no es necesario en XCP SMB.
 
 
 
