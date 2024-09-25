@@ -79,8 +79,7 @@ En la siguiente tabla, se muestra el `verify` parámetros y su descripción.
 | <<verifique -noownership>> | No comprobar la propiedad. 
 
 
-| <<verifique -ads>> | Busque cambios y modificaciones de flujos de datos alternativos en el recurso compartido SMB de origen y destino. Si hay cambios, aplica el cambio al destino a.
-asegúrese de que el destino es idéntico al origen. 
+| <<verifique -ads>> |  `verify`El comando con el `-ads` parámetro comprueba cualquier flujo de datos alternativo en el origen y el destino y muestra las diferencias. 
 
 
 | <<verifique -noacls>> | No compruebe las ACL. 
@@ -110,10 +109,10 @@ asegúrese de que el destino es idéntico al origen.
 | <<verify_smb_acl,verifique -fallback-group  >> | Grupo de Active Directory o grupo local (no de dominio) en el equipo de destino para recibir los permisos de grupos de máquinas de origen locales (no de dominio) (ejemplo: Dominio\administradores). 
 
 
-| <<smb_verify_root,verifique -root>> | Sincronizar ACL para el directorio raíz. 
+| <<smb_verify_root,verifique -root>> | Verifique las ACL del directorio raíz. 
 
 
-| <<verify_smb_onlyacl,verifique -onlyacl>> | Copie solo la información de seguridad. 
+| <<verify_smb_onlyacl,verifique -onlyacl>> | Verifique solo la información de seguridad. 
 |===
 
 
@@ -477,7 +476,7 @@ STATUS : PASSED
 
 == verifique -ads
 
-Uso `-ads` con el `verify` comando para leer si hay flujos de datos alternativos en el origen y el destino y mostrar las diferencias.
+Utilice `-ads` el parámetro con `verify` el comando para comprobar si hay flujos de datos alternativos en el origen y el destino y mostrar las diferencias.
 
 .Sintaxis
 [source, cli]
@@ -774,7 +773,7 @@ xcp verify -noacls -fallback-user <fallback_user> -fallback-group <fallback_grou
 
 == verifique -root
 
-Utilice la `-root` con el `verify` Comando para sincronizar las ACL para el directorio raíz.
+Utilice `-root` el parámetro con `verify` el comando para verificar las ACL del directorio raíz.
 
 .Sintaxis
 [source, cli]
