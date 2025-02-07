@@ -614,6 +614,9 @@ STATUS : PASSED
 
 Utilice la `-stats` con el `scan` comando para mostrar archivos en un formato de informe de estadísticas de árbol.
 
+
+NOTE: La opción -stats imprime un informe legible para seres humanos en la consola. Otras opciones de formato de informe son -html o -csv. El formato de valores separados por comas (CSV) tiene valores exactos. Los informes CSV y HTML se guardan automáticamente en el catálogo, si existe un catálogo.
+
 .Sintaxis
 [source, cli]
 ----

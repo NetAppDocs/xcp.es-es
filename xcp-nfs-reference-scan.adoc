@@ -199,9 +199,13 @@ STATUS : PASSED
 
 Utilice la `-stats`, `-csv`, y. `-html` parámetros con el `scan` comando para mostrar los archivos en el formato de informe de estadísticas de árbol.
 
+[NOTE]
+====
+*  `-stats`La opción imprime un informe legible por el usuario en la consola. Otras opciones de formato de informe son `-html` o. `-csv` El formato de valores separados por comas (CSV) tiene valores exactos. Los informes CSV y HTML se guardan automáticamente en el catálogo, si existe un catálogo.
+* Los informes XCP (.csv, .html) se guardan en la ubicación de catálogo especificada en el `xcp.ini` archivo. Los archivos se almacenan en la `<catalog path>/catalog/indexes/1/reports` carpeta. Puede ver informes de ejemplo en la link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872["Referencia del NetApp XCP 1.9.3"^].
 
-NOTE: Los informes XCP (.csv, .html) se guardan en la ubicación del catálogo especificada en la `xcp.ini` archivo. Los archivos se almacenan en la `<catalog path>/catalog/indexes/1/reports` carpeta. Puede ver informes de muestra en el apéndice.
 
+====
 .Sintaxis
 [source, cli]
 ----
